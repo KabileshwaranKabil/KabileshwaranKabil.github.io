@@ -2,6 +2,8 @@
 layout: post
 title: "Why I Started Learning in Public"
 categories: [Notes]
+tags: [Learning, CS, Projects]
+author: M.Kabileshwaran
 ---
 
 ## Introduction

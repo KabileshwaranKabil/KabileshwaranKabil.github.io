@@ -2,33 +2,44 @@
 layout: default
 title: Learning in Public
 ---
-[Home](/) | [DSA](/dsa/) | [Projects](/projects/) | [Notes](/notes/)
 
-# Learning in Public
+<!-- Navigation -->
+<nav style="margin-bottom: 20px;">
+[🏠 Home](/) | [📚 DSA](/dsa/) | [🛠 Projects](/projects/) | [📝 Notes](/notes/)
+</nav>
 
-Hi, I’m Kabileshwaran — a Computer Science undergraduate documenting what I learn every day.
+# 👋 Welcome to My Learning Journal
 
-This site is a public record of my journey through core Computer Science concepts, data structures and algorithms, and real-world project development. I use this space to write clear explanations, reflect on mistakes, and reinforce fundamentals through consistent practice.
+Hi, I’m **Kabileshwaran**, a Computer Science undergraduate documenting what I learn every day.  
 
-### What you’ll find here
-- 📘 Daily learnings and technical notes  
-- 🧠 Data Structures & Algorithms explanations  
-- 🛠 Project breakdowns and implementation insights  
-- 📌 Key takeaways from building and problem-solving  
+This site is a public record of my journey through core CS concepts, data structures & algorithms, and real-world project development. I write clear explanations, reflect on mistakes, and reinforce fundamentals through consistent practice.
+
+---
+
+## ✨ What You’ll Find Here
+
+- 📘 **Daily Learnings & Notes** – concise, clear, and structured  
+- 🧠 **DSA Concepts & Problem Solving** – step-by-step explanations  
+- 🛠 **Projects & Implementation Insights** – practical coding experience  
+- 📌 **Key Takeaways** – lessons from building, debugging, and learning
 
 The goal is simple: **learn deeply, write clearly, and improve consistently**.
 
 ---
-## 📚 All Blog Posts
+
+## 📝 All Blog Posts
 
 <ul>
   {% for post in site.posts %}
     <li>
-      <a href="{{ post.url }}">{{ post.title }}</a>
-      <small>
-        ({{ post.date | date: "%Y-%m-%d" }} |
-        {{ post.categories | join: ", " }})
+      <a href="{{ post.url }}" style="font-weight: bold;">{{ post.title }}</a>
+      <br>
+      <small style="color: gray; font-size: 0.9em;">
+        📅 {{ post.date | date: "%Y-%m-%d" }}
+        {% if post.categories %} | 🗂 Categories: {{ post.categories | join: ", " }}{% endif %}
+        {% if post.tags %} | 🔖 Tags: {{ post.tags | join: ", " }}{% endif %}
       </small>
     </li>
+    <hr style="margin: 10px 0;">
   {% endfor %}
 </ul>

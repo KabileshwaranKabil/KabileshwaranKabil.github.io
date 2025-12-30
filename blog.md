@@ -11,6 +11,7 @@ permalink: /blog/
     <li>
       <a href="{{ post.url }}">
         {{ post.date | date: "%Y-%m-%d" }} — {{ post.title }}
+        by {{ post.author }}
       </a>
     </li>
   {% endfor %}
