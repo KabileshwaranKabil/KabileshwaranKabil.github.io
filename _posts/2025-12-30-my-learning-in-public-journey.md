@@ -38,3 +38,7 @@ The goal is not to impress, but to **improve continuously**.
 My next posts will focus on fundamental topics in programming and data structures, starting with arrays and basic problem-solving patterns.
 
 Thanks for reading.
+<p style="color: gray; font-size: 0.9em;">
+Categories: {% if page.categories %}{{ page.categories | join: ", " }}{% endif %} | 
+Tags: {% if page.tags %}{{ page.tags | join: ", " }}{% endif %}
+</p>
