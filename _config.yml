@@ -13,3 +13,4 @@ plugins:
 author: Kabileshwaran
 
 markdown: kramdown
+minimal-theme-mode: auto 
