@@ -1,3 +1,8 @@
+---
+layout: default
+title: Learning in Public
+---
+
 # Learning in Public
 
 Hi, I’m Kabileshwaran — a Computer Science undergraduate documenting what I learn every day.
@@ -11,3 +16,17 @@ This site is a public record of my journey through core Computer Science concept
 - 📌 Key takeaways from building and problem-solving  
 
 The goal is simple: **learn deeply, write clearly, and improve consistently**.
+
+---
+
+## 📚 All Blog Posts
+
+<ul>
+  {% for post in site.posts %}
+    <li>
+      <a href="{{ post.url }}">
+        {{ post.date | date: "%Y-%m-%d" }} — {{ post.title }}
+      </a>
+    </li>
+  {% endfor %}
+</ul>
