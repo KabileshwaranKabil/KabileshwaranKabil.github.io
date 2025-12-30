@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Why I Started Learning in Public"
+categories: [Notes]
 ---
 
 ## Introduction

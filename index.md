@@ -18,15 +18,16 @@ This site is a public record of my journey through core Computer Science concept
 The goal is simple: **learn deeply, write clearly, and improve consistently**.
 
 ---
-
 ## 📚 All Blog Posts
 
 <ul>
   {% for post in site.posts %}
     <li>
-      <a href="{{ post.url }}">
-        {{ post.date | date: "%Y-%m-%d" }} — {{ post.title }}
-      </a>
+      <a href="{{ post.url }}">{{ post.title }}</a>
+      <small>
+        ({{ post.date | date: "%Y-%m-%d" }} |
+        {{ post.categories | join: ", " }})
+      </small>
     </li>
   {% endfor %}
 </ul>
