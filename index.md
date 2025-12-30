@@ -2,6 +2,7 @@
 layout: default
 title: Learning in Public
 ---
+[Home](/) | [DSA](/dsa/) | [Projects](/projects/) | [Notes](/notes/)
 
 # Learning in Public
 
