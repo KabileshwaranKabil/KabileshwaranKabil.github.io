@@ -3,10 +3,7 @@ layout: default
 title: Learning in Public
 ---
 
-<!-- Navigation -->
-<nav style="margin-bottom: 20px;">
-[🏠 Home](/) | [📚 DSA](/dsa/) | [🛠 Projects](/projects/) | [📝 Notes](/notes/)
-</nav>
+[🏠 Home](/) &nbsp;|&nbsp; [📚 DSA](/dsa/) &nbsp;|&nbsp; [🛠 Projects](/projects/) &nbsp;|&nbsp; [📝 Notes](/notes/)
 
 # 👋 Welcome to My Learning Journal
 
@@ -16,14 +13,34 @@ This site is a public record of my journey through core CS concepts, data struct
 
 ---
 
-## ✨ What You’ll Find Here
+## ✨ What You’ll Find on This Blog
 
-- 📘 **Daily Learnings & Notes** – concise, clear, and structured  
-- 🧠 **DSA Concepts & Problem Solving** – step-by-step explanations  
-- 🛠 **Projects & Implementation Insights** – practical coding experience  
-- 📌 **Key Takeaways** – lessons from building, debugging, and learning
+This blog is organized to help you follow my learning journey efficiently. Here’s what you can expect:
+
+- **📘 Daily Learnings & Notes**  
+  Concise, clear, and structured summaries of concepts I study every day.
+
+- **🧠 Data Structures & Algorithms (DSA)**  
+  Step-by-step explanations, problem-solving patterns, and optimized approaches.
+
+- **🛠 Projects & Implementation Insights**  
+  Detailed breakdowns of projects I build, including design choices and practical lessons.
+
+- **📌 Key Takeaways & Reflections**  
+  Important lessons learned from coding, debugging, and applying concepts in real scenarios.
+
+- **🔗 References & Resources**  
+  Links to official documentation, tutorials, and articles that I find useful.
 
 The goal is simple: **learn deeply, write clearly, and improve consistently**.
+
+## 🔗 Connect With Me
+
+You can follow my learning journey and projects on these platforms:
+
+- [LinkedIn](https://www.linkedin.com/in/m-kabileshwaran-4018a5378/)  
+- [GitHub](https://github.com/KabileshwaranKabil)  
+- [LeetCode](https://leetcode.com/u/Kabileshwaran1896/)  
 
 ---
 
