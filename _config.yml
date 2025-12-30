@@ -1,28 +1,22 @@
-# Jekyll Theme
 theme: jekyll-theme-minimal
 remote_theme: pages-themes/minimal@v0.2.0
 
-# Site Settings
 title: Kabileshwaran | Learning in Public
 description: A public record of my daily learnings, projects, and core Computer Science concepts as a Computer Science undergraduate.
 
-# Optional Settings
-# URL of your GitHub Pages site (replace with your actual username/repo)
 url: "https://kabileshwarankabil.github.io"
-baseurl: "" # leave empty if publishing to main domain
 
-# Optional: Enable GitHub Pages defaults for minimal theme
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
 
-# Author info (used in posts if needed)
 author: Kabileshwaran
 
-# Markdown processing
 markdown: kramdown
 
 <meta property="og:title" content="Learning in Public – My CS Blog" />
 <meta property="og:description" content="Daily learnings, technical notes, and projects from my CS journey." />
 <meta property="og:image" content="https://kabileshwarankabil.github.io/assets/images/thumbnail.png" />
 <meta property="og:url" content="https://kabileshwarankabil.github.io/" />
+
+minimal-theme-mode: auto
