@@ -3,8 +3,7 @@ layout: default
 title: Learning in Public
 ---
 
-[🏠 Home](/) &nbsp;|&nbsp; [📚 DSA](/dsa/) &nbsp;|&nbsp; [🛠 Projects](/projects/) &nbsp;|&nbsp; [📝 Notes](/notes/)
-
+[🏠 Home](/) &nbsp;|&nbsp; [📚 DSA](/dsa/) &nbsp;|&nbsp; [🛠 Projects](/projects/) &nbsp;|&nbsp; [📝 Notes](/notes/) &nbsp;|&nbsp; [💭 Reflections](/reflections/)
 # 👋 Welcome to My Learning Journal
 
 Hi, I’m **Kabileshwaran**, a Computer Science undergraduate documenting what I learn every day.  
