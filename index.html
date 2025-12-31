@@ -1,0 +1,273 @@
+---
+layout: default
+---
+
+<div class="home-hero">
+  <div class="hero-content">
+    <img src="{{ '/assets/images/profile.png' | relative_url }}" alt="Profile Picture" class="profile-picture">
+    <h1 class="hero-title">{{ site.title }}</h1>
+    <p class="hero-tagline">{{ site.tagline }}</p>
+    <p class="hero-description">{{ site.description }}</p>
+    <div class="hero-links">
+      <a href="{{ '/dsa' | relative_url }}" class="hero-btn">DSA</a>
+      <a href="{{ '/projects' | relative_url }}" class="hero-btn">Projects</a>
+      <a href="{{ '/notes' | relative_url }}" class="hero-btn">Notes</a>
+      <a href="{{ '/reflections' | relative_url }}" class="hero-btn">Reflections</a>
+    </div>
+  </div>
+</div>
+
+<div class="recent-posts-section">
+  <h2 class="section-title">Recent Posts</h2>
+  
+  {%- if site.posts.size > 0 -%}
+    <div class="post-grid">
+      {%- for post in site.posts limit:6 -%}
+        <article class="post-card">
+          <div class="post-card-content">
+            <span class="post-date">{{ post.date | date: "%b %d, %Y" }}</span>
+            <h3 class="post-title">
+              <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+            </h3>
+            {%- if post.excerpt -%}
+              <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
+            {%- endif -%}
+            <div class="post-categories">
+              {%- for category in post.categories -%}
+                <span class="category-tag">{{ category }}</span>
+              {%- endfor -%}
+            </div>
+          </div>
+        </article>
+      {%- endfor -%}
+    </div>
+    
+    <div class="view-all-posts">
+      <a href="{{ '/posts' | relative_url }}" class="view-all-btn">View All Posts →</a>
+    </div>
+  {%- else -%}
+    <p class="no-posts">No posts yet.</p>
+  {%- endif -%}
+</div>
+
+<style>
+/* Home Hero Section */
+.home-hero {
+  background: linear-gradient(135deg, var(--surface) 0%, var(--background) 100%);
+  padding: 60px 20px;
+  margin: -20px -20px 40px -20px;
+  border-radius: 0 0 24px 24px;
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.profile-picture {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--accent-color);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.profile-picture:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 32px rgba(52, 152, 219, 0.3);
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: var(--text-primary) !important;
+}
+
+.hero-tagline {
+  font-size: 1.2rem;
+  color: var(--text-secondary) !important;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+.hero-description {
+  font-size: 1rem;
+  color: var(--text-secondary) !important;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.hero-links {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hero-btn {
+  padding: 12px 28px;
+  background: var(--accent-color);
+  color: white !important;
+  border-radius: 8px;
+  text-decoration: none !important;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
+}
+
+.hero-btn:hover {
+  background: var(--accent-dark) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(52, 152, 219, 0.3);
+}
+
+/* Recent Posts Section */
+.recent-posts-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-align: center;
+  color: var(--text-primary) !important;
+}
+
+.post-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.post-card {
+  background: var(--surface);
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.post-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  border-color: var(--accent-color);
+}
+
+.post-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.post-date {
+  font-size: 0.85rem;
+  color: var(--text-secondary) !important;
+  font-weight: 500;
+}
+
+.post-title {
+  margin: 0;
+  font-size: 1.3rem;
+  line-height: 1.4;
+}
+
+.post-title a {
+  color: var(--text-primary) !important;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.post-title a:hover {
+  color: var(--accent-color) !important;
+}
+
+.post-excerpt {
+  color: var(--text-secondary) !important;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.post-categories {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.category-tag {
+  background: var(--accent-color);
+  color: white !important;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.view-all-posts {
+  text-align: center;
+}
+
+.view-all-btn {
+  display: inline-block;
+  padding: 12px 32px;
+  background: var(--surface);
+  color: var(--accent-color) !important;
+  border: 2px solid var(--accent-color);
+  border-radius: 8px;
+  text-decoration: none !important;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.view-all-btn:hover {
+  background: var(--accent-color);
+  color: white !important;
+  transform: translateY(-2px);
+}
+
+.no-posts {
+  text-align: center;
+  color: var(--text-secondary) !important;
+  font-size: 1.1rem;
+  padding: 40px;
+}
+
+@media (max-width: 768px) {
+  .home-hero {
+    padding: 40px 20px;
+  }
+
+  .profile-picture {
+    width: 120px;
+    height: 120px;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-tagline {
+    font-size: 1rem;
+  }
+
+  .hero-links {
+    flex-direction: column;
+  }
+
+  .hero-btn {
+    width: 100%;
+  }
+
+  .post-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
