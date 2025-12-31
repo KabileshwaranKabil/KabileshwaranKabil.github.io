@@ -1,0 +1,328 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+/* Custom Dark Mode Variables */
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --text-primary: #2c3e50;
+  --text-secondary: #6c757d;
+  --accent: #007bff;
+  --accent-hover: #0056b3;
+  --border-color: #dee2e6;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --card-bg: #ffffff;
+}
+
+[data-theme="dark"] {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --text-primary: #e0e0e0;
+  --text-secondary: #a0a0a0;
+  --accent: #4da6ff;
+  --accent-hover: #66b3ff;
+  --border-color: #404040;
+  --shadow: rgba(0, 0, 0, 0.3);
+  --card-bg: #252525;
+}
+
+/* Dark Mode Toggle Button */
+.dark-mode-toggle {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px var(--shadow);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+}
+
+.dark-mode-toggle:hover {
+  background: var(--accent-hover);
+  transform: scale(1.1) rotate(10deg);
+  box-shadow: 0 6px 20px var(--shadow);
+}
+
+.dark-mode-toggle svg {
+  width: 24px;
+  height: 24px;
+  fill: white;
+  transition: transform 0.3s ease;
+}
+
+.dark-mode-toggle:hover svg {
+  transform: rotate(20deg);
+}
+
+/* Enhanced Header Styles */
+.site-header {
+  background: var(--bg-primary);
+  border-bottom: 2px solid var(--border-color);
+  box-shadow: 0 2px 8px var(--shadow);
+  transition: all 0.3s ease;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  backdrop-filter: blur(10px);
+}
+
+.site-title {
+  color: var(--text-primary) !important;
+  font-weight: 700;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.site-title:hover {
+  color: var(--accent) !important;
+  text-decoration: none;
+}
+
+/* Navigation Improvements */
+.site-nav {
+  .page-link {
+    color: var(--text-secondary);
+    margin-left: 25px;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease;
+    padding: 5px 0;
+  }
+
+  .page-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .page-link:hover {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .page-link:hover::after {
+    width: 100%;
+  }
+
+  .page-link.active {
+    color: var(--accent);
+  }
+
+  .page-link.active::after {
+    width: 100%;
+  }
+}
+
+/* Mobile Navigation */
+@media screen and (max-width: 600px) {
+  .site-nav {
+    .trigger {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 4px 12px var(--shadow);
+    }
+
+    .page-link {
+      display: block;
+      padding: 12px 15px;
+      margin: 5px 0;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
+
+    .page-link:hover {
+      background: var(--bg-secondary);
+      transform: translateX(5px);
+    }
+  }
+}
+
+/* Body and Layout */
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.page-content {
+  background: var(--bg-primary);
+  min-height: calc(100vh - 200px);
+}
+
+/* Enhanced Cards and Content */
+.post-list,
+.page-content {
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--text-primary);
+    position: relative;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+
+  h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+  }
+}
+
+/* Interactive Elements */
+a {
+  color: var(--accent);
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+/* Code Blocks */
+pre, code {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+}
+
+pre {
+  padding: 15px;
+  overflow-x: auto;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+code {
+  padding: 2px 6px;
+  font-size: 0.9em;
+}
+
+/* Post Cards */
+.post-list > li {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px var(--shadow);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid var(--border-color);
+}
+
+.post-list > li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px var(--shadow);
+}
+
+/* Footer */
+.site-footer {
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  border-top: 2px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+/* Tables */
+table {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+}
+
+th {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+tr {
+  border-bottom: 1px solid var(--border-color);
+}
+
+tr:hover {
+  background: var(--bg-secondary);
+}
+
+/* Blockquotes */
+blockquote {
+  border-left: 4px solid var(--accent);
+  background: var(--bg-secondary);
+  padding: 15px 20px;
+  margin: 20px 0;
+  border-radius: 0 8px 8px 0;
+  color: var(--text-secondary);
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection */
+::selection {
+  background: var(--accent);
+  color: white;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-content {
+  animation: fadeIn 0.6s ease;
+}
+
+/* Responsive Images */
+img {
+  border-radius: 8px;
+  box-shadow: 0 4px 12px var(--shadow);
+  transition: transform 0.3s ease;
+}
+
+img:hover {
+  transform: scale(1.02);
+}
+
+/* Focus Styles */
+*:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Loading Animation for Theme Toggle */
+.dark-mode-toggle.loading {
+  animation: pulse 1s ease infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
