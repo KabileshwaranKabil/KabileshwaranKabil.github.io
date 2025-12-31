@@ -1,7 +1,8 @@
 ---
+# Jekyll front matter - required for processing
 ---
 
-@import "{{ site.theme }}";
+@import "minima";
 
 /* Custom Dark Mode Variables */
 :root {
