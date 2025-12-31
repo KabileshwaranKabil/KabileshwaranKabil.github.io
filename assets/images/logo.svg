@@ -1,0 +1,19 @@
+<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle -->
+  <circle cx="30" cy="30" r="28" fill="#3498db" stroke="#2980b9" stroke-width="2"/>
+  
+  <!-- Letter K -->
+  <path d="M 20 15 L 20 45 L 24 45 L 24 31 L 38 45 L 44 45 L 28 29 L 43 15 L 37 15 L 24 27 L 24 15 Z" 
+        fill="white" 
+        stroke="white" 
+        stroke-width="0.5"/>
+  
+  <!-- Subtle gradient overlay -->
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#5dade2;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#2980b9;stop-opacity:0.3" />
+    </linearGradient>
+  </defs>
+  <circle cx="30" cy="30" r="28" fill="url(#grad1)"/>
+</svg>

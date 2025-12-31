@@ -4,6 +4,9 @@ layout: default
 
 <div class="home-hero">
   <div class="hero-content">
+    <div class="logo-container">
+      <img src="{{ '/assets/images/logo.svg' | relative_url }}" alt="K Logo" class="site-logo">
+    </div>
     <img src="{{ '/assets/images/profile.png' | relative_url }}" alt="Profile Picture" class="profile-picture">
     <h1 class="hero-title">{{ site.title }}</h1>
     <p class="hero-tagline">{{ site.tagline }}</p>
@@ -64,6 +67,32 @@ layout: default
 .hero-content {
   max-width: 700px;
   margin: 0 auto;
+}
+
+.logo-container {
+  margin-bottom: 20px;
+  animation: logoFloat 3s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.site-logo {
+  width: 80px;
+  height: 80px;
+  filter: drop-shadow(0 4px 12px rgba(52, 152, 219, 0.3));
+  transition: all 0.3s ease;
+}
+
+.site-logo:hover {
+  transform: scale(1.1) rotate(5deg);
+  filter: drop-shadow(0 6px 20px rgba(52, 152, 219, 0.5));
 }
 
 .profile-picture {
