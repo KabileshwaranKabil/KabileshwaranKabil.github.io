@@ -1,3 +1,13 @@
+<script>
+  // Apply theme immediately to prevent flash of wrong theme
+  (function() {
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
+
 <header class="site-header" role="banner">
   <div class="wrapper">
     <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
@@ -27,65 +37,38 @@
 </button>
 
 <script>
-  // Robust Dark Mode Implementation
+  // Dark Mode Toggle Functionality
   const darkModeToggle = document.getElementById('darkModeToggle');
   const themeIcon = document.getElementById('themeIcon');
   const html = document.documentElement;
 
-  // Initialize theme on page load
-  function initializeTheme() {
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const theme = savedTheme || (prefersDark ? 'dark' : 'light');
-    
-    applyTheme(theme);
+  // Update the icon based on current theme
+  function updateIcon() {
+    const currentTheme = html.getAttribute('data-theme') || 'light';
+    themeIcon.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
   }
 
-  // Apply theme to document
-  function applyTheme(theme) {
-    html.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-    updateThemeIcon(theme);
-    
-    // Apply to body for better CSS specificity
-    document.body.setAttribute('data-theme', theme);
-  }
-
-  // Update theme icon
-  function updateThemeIcon(theme) {
-    themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
-    themeIcon.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
-  }
-
-  // Toggle dark mode
-  darkModeToggle.addEventListener('click', () => {
+  // Toggle theme
+  darkModeToggle.addEventListener('click', function() {
     const currentTheme = html.getAttribute('data-theme') || 'light';
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    applyTheme(newTheme);
+    
+    html.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateIcon();
   });
 
-  // Listen for system theme changes
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-    if (!localStorage.getItem('theme')) {
-      applyTheme(e.matches ? 'dark' : 'light');
-    }
-  });
+  // Update icon on load
+  document.addEventListener('DOMContentLoaded', updateIcon);
 
-  // Initialize on page load
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializeTheme);
-  } else {
-    initializeTheme();
-  }
-
-  // Highlight active page in navigation
-  document.addEventListener('DOMContentLoaded', () => {
+  // Highlight active navigation link
+  document.addEventListener('DOMContentLoaded', function() {
     const currentPath = window.location.pathname;
     const navLinks = document.querySelectorAll('.page-link');
     
     navLinks.forEach(link => {
-      const linkPath = link.getAttribute('href');
-      if (currentPath === linkPath || (linkPath !== '/' && currentPath.includes(linkPath))) {
+      const href = link.getAttribute('href');
+      if (href && (currentPath === href || (href !== '/' && currentPath.includes(href)))) {
         link.classList.add('active');
       }
     });
