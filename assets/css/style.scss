@@ -59,10 +59,17 @@
   height: 24px;
   fill: white;
   transition: transform 0.3s ease;
+  position: absolute;
 }
 
 .dark-mode-toggle:hover svg {
   transform: rotate(20deg);
+}
+
+#sunIcon,
+#moonIcon {
+  width: 24px;
+  height: 24px;
 }
 
 /* Enhanced Header Styles */
