@@ -3,7 +3,7 @@
 theme: minima
 
 minima:
-  skin: dark
+  skin: auto
 
 lang: en
 
@@ -38,3 +38,21 @@ plugins:
   - jekyll-paginate
 
 markdown: kramdown
+
+# 404 Page Configuration
+404_error_page: 404.md
+
+# Exclude files from processing
+exclude:
+  - .gitignore
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+
+# Include dotfiles
+include:
+  - .htaccess
