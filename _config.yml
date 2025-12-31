@@ -2,8 +2,9 @@
 
 theme: minima
 
+# Disable minima's built-in theming to use our custom dark mode
 minima:
-  skin: auto
+  skin: null
 
 lang: en
 

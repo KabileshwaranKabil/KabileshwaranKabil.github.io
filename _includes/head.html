@@ -1,0 +1,57 @@
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{%- seo -%}
+<link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
+{%- feed_meta -%}
+{%- if jekyll.environment == 'production' and site.google_analytics -%}
+  {%- include google-analytics.html -%}
+{%- endif -%}
+
+<!-- Dark Mode Initialization -->
+<script>
+  (function() {
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+    document.documentElement.style.backgroundColor = theme === 'dark' ? '#1a1a1a' : '#ffffff';
+    document.documentElement.style.color = theme === 'dark' ? '#ecf0f1' : '#2c3e50';
+  })();
+</script>
+
+<!-- Inline Dark Mode Styles -->
+<style>
+  :root {
+    --primary-color: #2c3e50;
+    --accent-color: #3498db;
+    --accent-dark: #2980b9;
+    --background: #ffffff;
+    --surface: #f8f9fa;
+    --text-primary: #2c3e50;
+    --text-secondary: #7f8c8d;
+    --border-color: #ecf0f1;
+  }
+  
+  html[data-theme="dark"],
+  html[data-theme="dark"] body {
+    --primary-color: #ecf0f1;
+    --accent-color: #3498db;
+    --accent-dark: #2980b9;
+    --background: #1a1a1a;
+    --surface: #252525;
+    --text-primary: #ecf0f1;
+    --text-secondary: #95a5a6;
+    --border-color: #34495e;
+  }
+  
+  html[data-theme="dark"] {
+    background-color: #1a1a1a !important;
+    color: #ecf0f1 !important;
+  }
+  
+  html[data-theme="dark"] body {
+    background-color: #1a1a1a !important;
+    color: #ecf0f1 !important;
+  }
+</style>
