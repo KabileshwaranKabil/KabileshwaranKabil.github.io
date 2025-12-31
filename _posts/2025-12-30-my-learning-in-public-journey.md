@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "Why I Started Learning in Public"
+date: 2025-12-30 00:00:00 +0530
 categories: [Notes]
-tags: [Learning, CS, Projects]
-author: M.Kabileshwaran
+tags: [learning, cs, projects]
 ---
 
 ## Introduction
@@ -38,7 +38,3 @@ The goal is not to impress, but to **improve continuously**.
 My next posts will focus on fundamental topics in programming and data structures, starting with arrays and basic problem-solving patterns.
 
 Thanks for reading.
-<p style="color: gray; font-size: 0.9em;">
-Categories: {% if page.categories %}{{ page.categories | join: ", " }}{% endif %} | 
-Tags: {% if page.tags %}{{ page.tags | join: ", " }}{% endif %}
-</p>

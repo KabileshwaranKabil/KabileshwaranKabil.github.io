@@ -1,27 +1,113 @@
-remote_theme: cotes2020/jekyll-theme-chirpy
+# The Site Configuration
+
+# Import the theme
+theme: jekyll-theme-chirpy
+
+lang: en
+
+timezone: Asia/Kolkata
 
 title: Kabileshwaran | Learning in Public
-description: A public record of my daily learnings, projects, and core Computer Science concepts as a Computer Science undergraduate.
+
+tagline: Daily learnings, technical notes, and projects from my CS journey
+
+description: >-
+  A public record of my daily learnings, projects, and core Computer Science concepts as a Computer Science undergraduate.
+
 url: "https://kabileshwarankabil.github.io"
 
-author:
+github:
+  username: KabileshwaranKabil
+
+social:
   name: Kabileshwaran
+  email: 
   links:
     - https://github.com/KabileshwaranKabil
     - https://www.linkedin.com/in/m-kabileshwaran-4018a5378/
 
-timezone: Asia/Kolkata
+theme_mode: dark
 
-plugins:
-  - jekyll-remote-theme
-  - jekyll-feed
-  - jekyll-seo-tag
-  - jekyll-paginate
-  - jekyll-sitemap
-  - jekyll-archives
+avatar:
+
+toc: true
+
+comments:
+  provider:
+
+pwa:
+  enabled: true
+  cache:
+    enabled: true
 
 paginate: 10
 
-markdown: kramdown
+baseurl: ""
 
-theme_mode: dark
+kramdown:
+  footnote_backlink: "&#8617;&#xfe0e;"
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: highlight
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+      start_line: 1
+
+collections:
+  tabs:
+    output: true
+    sort_by: order
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      comments: true
+      toc: true
+      permalink: /posts/:title/
+  - scope:
+      path: _drafts
+    values:
+      comments: false
+  - scope:
+      path: ""
+      type: tabs
+    values:
+      layout: page
+      permalink: /:title/
+
+sass:
+  style: compressed
+
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  profile: false
+  blanklines: false
+  ignore:
+    envs: [development]
+
+exclude:
+  - "*.gem"
+  - "*.gemspec"
+  - docs
+  - tools
+  - README.md
+  - LICENSE
+  - purgecss.js
+  - "*.config.js"
+  - "package*.json"
+
+jekyll-archives:
+  enabled: [categories, tags]
+  layouts:
+    category: category
+    tag: tag
+  permalinks:
+    tag: /tags/:name/
+    category: /categories/:name/
