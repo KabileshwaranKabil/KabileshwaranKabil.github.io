@@ -1,0 +1,17 @@
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner wrapper">
+    <div class="footer-brand">
+      <div class="footer-title">{{ site.title | escape }}</div>
+      <div class="footer-tagline">Learning in public • Writing, building, and sharing progress.</div>
+    </div>
+    <div class="footer-meta">
+      <div>© {{ "now" | date: "%Y" }} {{ site.author | default: site.title | escape }}. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="{{ '/about' | relative_url }}">About</a>
+        <a href="{{ '/projects' | relative_url }}">Projects</a>
+        <a href="{{ '/posts' | relative_url }}">Blog</a>
+        <a href="{{ '/contact' | relative_url }}">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
