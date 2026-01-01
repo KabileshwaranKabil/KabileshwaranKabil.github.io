@@ -45,6 +45,14 @@ body {
   border-bottom: 1px solid var(--border-color) !important;
 }
 
+.site-header .wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
 .site-brand {
   display: flex;
   align-items: center;
@@ -79,6 +87,61 @@ body {
 
 .site-nav .page-link.active {
   color: var(--accent-color) !important;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-left: auto;
+}
+
+.site-nav .nav-trigger {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.site-nav label {
+  display: none;
+  cursor: pointer;
+}
+
+.site-nav .trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.site-nav .page-link {
+  padding: 0.35rem 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .site-header .wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .site-nav {
+    width: 100%;
+  }
+
+  .site-nav label {
+    display: block;
+  }
+
+  .site-nav .trigger {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding-top: 0.5rem;
+  }
+
+  .nav-trigger:checked + label + .trigger {
+    display: flex;
+  }
 }
 
 .page-content {
