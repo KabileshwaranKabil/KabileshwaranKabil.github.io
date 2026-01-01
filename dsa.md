@@ -26,7 +26,7 @@ Comprehensive learning journey through DSA with problem-solving patterns, optimi
 
 {% for post in site.posts %}
   {% if post.categories contains "DSA" %}
-    - [{{ post.title }}]({{ post.url }}) - {{ post.date | date: "%Y-%m-%d" }}
+    - [{{ post.title }}]({{ post.url | relative_url }}) - {{ post.date | date: "%Y-%m-%d" }}
   {% endif %}
 {% endfor %}
 
