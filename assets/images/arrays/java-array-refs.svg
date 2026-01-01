@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="260" viewBox="0 0 760 260" fill="none">
+  <rect width="760" height="260" fill="#0B1021" rx="12"/>
+  <text x="20" y="32" fill="#9CE1FF" font-family="Segoe UI, sans-serif" font-size="18" font-weight="600">Java array of references</text>
+
+  <g transform="translate(20,60)">
+    <rect x="0" y="0" width="720" height="70" fill="#141B32" stroke="#3EC4FF" stroke-width="2" rx="10"/>
+    <text x="12" y="24" fill="#C6F9E8" font-family="Segoe UI, sans-serif" font-size="14">names (on stack) → array object (on heap)</text>
+    <g transform="translate(12,30)">
+      <rect x="0" y="0" width="120" height="32" fill="#1D2542" stroke="#5FE0A8" stroke-width="2" rx="6"/>
+      <text x="12" y="22" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="14">index 0</text>
+    </g>
+    <g transform="translate(142,30)">
+      <rect x="0" y="0" width="120" height="32" fill="#1D2542" stroke="#5FE0A8" stroke-width="2" rx="6"/>
+      <text x="12" y="22" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="14">index 1</text>
+    </g>
+    <g transform="translate(272,30)">
+      <rect x="0" y="0" width="120" height="32" fill="#1D2542" stroke="#5FE0A8" stroke-width="2" rx="6"/>
+      <text x="12" y="22" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="14">index 2</text>
+    </g>
+    <g transform="translate(402,30)">
+      <rect x="0" y="0" width="120" height="32" fill="#1D2542" stroke="#5FE0A8" stroke-width="2" rx="6"/>
+      <text x="12" y="22" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="14">index 3</text>
+    </g>
+    <g transform="translate(532,30)">
+      <rect x="0" y="0" width="120" height="32" fill="#1D2542" stroke="#5FE0A8" stroke-width="2" rx="6"/>
+      <text x="12" y="22" fill="#FFFFFF" font-family="Segoe UI, sans-serif" font-size="14">index 4</text>
+    </g>
+  </g>
+
+  <g transform="translate(60,150)">
+    <rect x="0" y="0" width="140" height="40" fill="#1E2C4A" stroke="#F7BF4F" stroke-width="2" rx="8"/>
+    <text x="14" y="26" fill="#FCE9C3" font-family="Segoe UI, sans-serif" font-size="14">"Alice" (heap)</text>
+  </g>
+  <g transform="translate(240,150)">
+    <rect x="0" y="0" width="140" height="40" fill="#1E2C4A" stroke="#F7BF4F" stroke-width="2" rx="8"/>
+    <text x="14" y="26" fill="#FCE9C3" font-family="Segoe UI, sans-serif" font-size="14">"Bob" (heap)</text>
+  </g>
+  <g transform="translate(420,150)">
+    <rect x="0" y="0" width="140" height="40" fill="#1E2C4A" stroke="#F7BF4F" stroke-width="2" rx="8"/>
+    <text x="14" y="26" fill="#FCE9C3" font-family="Segoe UI, sans-serif" font-size="14">"Chai" (heap)</text>
+  </g>
+  <g transform="translate(600,150)">
+    <rect x="0" y="0" width="140" height="40" fill="#1E2C4A" stroke="#F7BF4F" stroke-width="2" rx="8"/>
+    <text x="14" y="26" fill="#FCE9C3" font-family="Segoe UI, sans-serif" font-size="14">null</text>
+  </g>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5FE0A8"/>
+    </marker>
+  </defs>
+
+  <line x1="92" y1="122" x2="92" y2="150" stroke="#5FE0A8" stroke-width="2.2" marker-end="url(#arrow)"/>
+  <line x1="222" y1="122" x2="310" y2="150" stroke="#5FE0A8" stroke-width="2.2" marker-end="url(#arrow)"/>
+  <line x1="352" y1="122" x2="490" y2="150" stroke="#5FE0A8" stroke-width="2.2" marker-end="url(#arrow)"/>
+  <line x1="482" y1="122" x2="670" y2="150" stroke="#5FE0A8" stroke-width="2.2" marker-end="url(#arrow)" stroke-dasharray="6 6"/>
+
+  <text x="20" y="236" fill="#A1A9C3" font-family="Segoe UI, sans-serif" font-size="13">Array holds references side-by-side; each arrow points to a String object (or null) elsewhere on the heap.</text>
+</svg>
