@@ -166,3 +166,30 @@ td {
     font-size: 1.2rem;
   }
 }
+
+.post-share {
+  margin: 2rem 0 1.5rem;
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 0.95rem;
+}
+
+.post-share a,
+.post-share button {
+  border: 1px solid var(--border-color);
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+  background: var(--surface);
+  text-decoration: none;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.post-share a:hover,
+.post-share button:hover {
+  background: var(--border-color);
+  border-color: var(--accent-color);
+}

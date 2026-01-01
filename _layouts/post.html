@@ -27,6 +27,17 @@ layout: default
     </div>
   {% endif %}
 
+  <div class="post-share">
+    <span>Share:</span>
+    {% assign share_url = page.url | absolute_url | uri_escape %}
+    {% assign share_title = page.title | uri_escape %}
+    <a href="https://twitter.com/intent/tweet?url={{ share_url }}&text={{ share_title }}" target="_blank" rel="noopener">X / Twitter</a>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ share_url }}" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://reddit.com/submit?url={{ share_url }}&title={{ share_title }}" target="_blank" rel="noopener">Reddit</a>
+    <a href="https://wa.me/?text={{ share_title }}%20{{ share_url }}" target="_blank" rel="noopener">WhatsApp</a>
+    <button type="button" onclick="navigator.clipboard.writeText('{{ page.url | absolute_url }}'); alert('Link copied!');">Copy link</button>
+  </div>
+
   <!-- Comments Section using utterances -->
   <div class="comments-section">
     <h2>Comments</h2>
