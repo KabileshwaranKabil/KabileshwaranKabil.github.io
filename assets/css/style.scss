@@ -45,12 +45,28 @@ body {
   border-bottom: 1px solid var(--border-color) !important;
 }
 
+.site-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.site-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--border-color);
+}
+
 .site-title {
   color: var(--accent-color) !important;
+  text-decoration: none !important;
 }
 
 .site-title:hover {
   color: var(--accent-dark) !important;
+  text-decoration: none !important;
 }
 
 .site-nav .page-link {
@@ -72,6 +88,13 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   color: var(--text-primary) !important;
+}
+
+.post-title,
+.post-title a,
+.post-title a:hover,
+.post-title a:focus {
+  text-decoration: none !important;
 }
 
 p, li, span {
