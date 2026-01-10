@@ -40,6 +40,14 @@ plugins:
 
 markdown: kramdown
 
+# Syntax highlighting
+kramdown:
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: false
+      start_line: 1
+
 # 404 Page Configuration
 404_error_page: 404.md
 
