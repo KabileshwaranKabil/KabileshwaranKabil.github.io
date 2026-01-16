@@ -1,11 +1,10 @@
 ---
 layout: post
-title: "Git Basic Commands for daily use"
+title: "Git Basics Cheat Sheet"
 date: 2026-01-16 00:00:00 +0530
 categories: [Notes]
 tags: [learning, cs, git, version-control, development]
 ---
-## Git Basics Cheat Sheet
 
 This post documents a simple and beginner-friendly Git cheat sheet created as part of my learning journey.
 It highlights commonly used Git commands with clear explanations and practical examples, and is intended to help newcomers understand basic version control workflows.
