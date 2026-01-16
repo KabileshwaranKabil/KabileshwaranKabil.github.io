@@ -6,8 +6,6 @@ categories: [Notes]
 tags: [blog, github-pages, jekyll, tutorial, learning]
 ---
 
-## Introduction
-
 As a Computer Science student learning in public, I wanted to create a personal blog to document my journey, share my thoughts, and build an online presence. After researching options, I decided to use GitHub Pages because it's free, easy to set up, and integrates perfectly with my Git workflow. This post is my personal guide on how I built this blog from scratch, written as a revision for myself and as a tutorial for other beginners.
 
 ## Why GitHub Pages?
@@ -251,5 +249,4 @@ Creating a blog with GitHub Pages was easier than I expected. It took me about a
 
 Remember, the key is to start simple and iterate. Your first version doesn't need to be perfect. Mine certainly wasn't!
 
-Happy blogging! 🚀</content>
-<parameter name="filePath">d:\AcademyHub\Self Learning\KabileshwaranKabil.github.io\_posts\2026-01-17-How-I-Built-My-Blog-with-GitHub-Pages.md
+Happy blogging! 🚀
