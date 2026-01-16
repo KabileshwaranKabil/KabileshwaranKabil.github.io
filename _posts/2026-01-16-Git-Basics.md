@@ -35,7 +35,7 @@ tags: [learning, cs, git, version-control, development]
     A simple reference covering essential Git commands for daily development workflows.
   </div>
 <div>
-    <script src="https://gist.github.com/   KabileshwaranKabil/9486a4e47ca5d71beb385328ac0a8c86.js">
+    <script src="https://gist.github.com/KabileshwaranKabil/9486a4e47ca5d71beb385328ac0a8c86.js">
     </script>
 </div>
 
