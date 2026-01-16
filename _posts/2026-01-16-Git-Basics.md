@@ -34,8 +34,9 @@ tags: [learning, cs, git, version-control, development]
   <div class="gist-note">
     A simple reference covering essential Git commands for daily development workflows.
   </div>
-
-<script src="https://gist.github.com/   KabileshwaranKabil/9486a4e47ca5d71beb385328ac0a8c86.js"></script>
+<div>
+    <script src="https://gist.github.com/   KabileshwaranKabil/9486a4e47ca5d71beb385328ac0a8c86.js">
+    </script>
 </div>
 
 
