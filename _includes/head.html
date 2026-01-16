@@ -93,4 +93,31 @@
     color: var(--text-secondary) !important;
     background-color: var(--surface) !important;
   }
+  
+  /* Syntax highlighting for gist code */
+  html[data-theme="dark"] .gist code {
+    background-color: var(--surface) !important;
+    color: var(--text-primary) !important;
+  }
+  
+  html[data-theme="dark"] .gist pre {
+    background-color: var(--surface) !important;
+    border-color: var(--border-color) !important;
+  }
+  
+  html[data-theme="dark"] .gist .pl-c {
+    color: #6b7280 !important; /* comments */
+  }
+  
+  html[data-theme="dark"] .gist .pl-s {
+    color: #fbbf24 !important; /* strings */
+  }
+  
+  html[data-theme="dark"] .gist .pl-k {
+    color: #8b5cf6 !important; /* keywords */
+  }
+  
+  html[data-theme="dark"] .gist .pl-en {
+    color: #3b82f6 !important; /* entities */
+  }
 </style>
