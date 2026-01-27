@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Introduction to Bash: From Beginner Confusion to Scripting Mastery"
+title: "Introduction to Bash "
 date: 2026-01-27 00:00:00 +0530
 categories: [Notes]
 tags: [script, shell, bash, tutorial, learning]
