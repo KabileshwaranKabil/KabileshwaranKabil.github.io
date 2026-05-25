@@ -1,13 +1,21 @@
 ---
 layout: default
 ---
+<div class="reading-progress-track" aria-hidden="true">
+  <div id="readingProgressBar" class="reading-progress-bar"></div>
+</div>
+
 <article class="post">
+  {% assign words = content | number_of_words %}
+  {% assign reading_time = words | plus: 219 | divided_by: 220 %}
+
   <header class="post-header">
     <h1 class="post-title">{{ page.title }}</h1>
     <p class="post-meta">
       <time datetime="{{ page.date | date_to_xmlschema }}">
         {{ page.date | date: "%B %-d, %Y" }}
       </time>
+      • {{ reading_time }} min read
       {% if page.categories %}
         • {% for category in page.categories %}{{ category }}{% unless forloop.last %}, {% endunless %}{% endfor %}
       {% endif %}

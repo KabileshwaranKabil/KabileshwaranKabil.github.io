@@ -1,13 +1,39 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: "en" }}">
   {%- include head.html -%}
-  <body>
+  <body data-base-url="{{ '/' | relative_url }}" data-sw-url="{{ '/sw.js' | relative_url }}">
+    <div class="app-splash" id="appSplash" aria-hidden="true">
+      <img src="{{ '/assets/images/profile.png' | relative_url }}" alt="{{ site.title | escape }}" class="splash-avatar" />
+      <p class="splash-title">Study Review</p>
+    </div>
+
     {%- include header.html -%}
+
+    <button id="installAppBtn" class="install-app-btn" type="button" hidden>Install App</button>
+
     <main class="page-content" aria-label="Content">
-      <div class="wrapper">
+      <div class="wrapper app-content-wrap">
         {{ content }}
       </div>
     </main>
+
+    <button class="fab" id="fabAction" type="button" aria-label="Quick action">+</button>
+
+    <nav class="bottom-nav" aria-label="Primary">
+      <a href="{{ '/' | relative_url }}" class="bottom-nav-link" data-route="/">
+        <span>Home</span>
+      </a>
+      <a href="{{ '/posts' | relative_url }}" class="bottom-nav-link" data-route="/posts">
+        <span>Blog</span>
+      </a>
+      <a href="{{ '/review' | relative_url }}" class="bottom-nav-link" data-route="/review">
+        <span>Review</span>
+      </a>
+      <a href="{{ '/notes' | relative_url }}" class="bottom-nav-link" data-route="/notes">
+        <span>Notes</span>
+      </a>
+    </nav>
+
     {%- include footer.html -%}
   </body>
 </html>

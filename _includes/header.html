@@ -1,13 +1,3 @@
-<script>
-  // Apply theme immediately to prevent flash of wrong theme
-  (function() {
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const theme = savedTheme || (prefersDark ? 'dark' : 'light');
-    document.documentElement.setAttribute('data-theme', theme);
-  })();
-</script>
-
 <header class="site-header" role="banner">
   <div class="wrapper">
     <div class="site-brand">
@@ -27,6 +17,7 @@
         <a class="page-link" href="{{ '/dsa' | relative_url }}">DSA</a>
         <a class="page-link" href="{{ '/projects' | relative_url }}">Projects</a>
         <a class="page-link" href="{{ '/notes' | relative_url }}">Notes</a>
+        <a class="page-link" href="{{ '/review' | relative_url }}">Review</a>
         <a class="page-link" href="{{ '/reflections' | relative_url }}">Reflections</a>
         <a class="page-link" href="{{ '/about' | relative_url }}">About</a>
       </div>
@@ -34,46 +25,7 @@
   </div>
 </header>
 
-<!-- Dark Mode Toggle Button -->
-<button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode" title="Toggle dark/light mode">
-  <span id="themeIcon">🌙</span>
+<button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle color mode" title="Toggle light and dark mode">
+  <span class="mode-icon" aria-hidden="true"></span>
+  <span class="mode-label">Mode</span>
 </button>
-
-<script>
-  // Dark Mode Toggle Functionality
-  const darkModeToggle = document.getElementById('darkModeToggle');
-  const themeIcon = document.getElementById('themeIcon');
-  const html = document.documentElement;
-
-  // Update the icon based on current theme
-  function updateIcon() {
-    const currentTheme = html.getAttribute('data-theme') || 'light';
-    themeIcon.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
-  }
-
-  // Toggle theme
-  darkModeToggle.addEventListener('click', function() {
-    const currentTheme = html.getAttribute('data-theme') || 'light';
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    
-    html.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    updateIcon();
-  });
-
-  // Update icon on load
-  document.addEventListener('DOMContentLoaded', updateIcon);
-
-  // Highlight active navigation link
-  document.addEventListener('DOMContentLoaded', function() {
-    const currentPath = window.location.pathname;
-    const navLinks = document.querySelectorAll('.page-link');
-    
-    navLinks.forEach(link => {
-      const href = link.getAttribute('href');
-      if (href && (currentPath === href || (href !== '/' && currentPath.includes(href)))) {
-        link.classList.add('active');
-      }
-    });
-  });
-</script>
