@@ -22,15 +22,15 @@
 }
 
 html[data-theme="dark"] {
-  --bg: #111214;
-  --bg-soft: #1b1d22;
-  --surface: rgba(25, 29, 34, 0.84);
-  --surface-solid: #1c2027;
-  --text: #f4f4f5;
-  --text-soft: #a8aeb8;
-  --border: rgba(244, 244, 245, 0.12);
-  --accent: #f4f4f5;
-  --accent-soft: #c6cad0;
+  --bg: #0d1117;
+  --bg-soft: #151a22;
+  --surface: rgba(20, 25, 33, 0.9);
+  --surface-solid: #171c24;
+  --text: #eef2f7;
+  --text-soft: #b0bac6;
+  --border: rgba(238, 242, 247, 0.1);
+  --accent: #f0f4f8;
+  --accent-soft: #c7d0db;
   --success: #48bb78;
   --danger: #f56565;
   --shadow-sm: 0 8px 24px rgba(0, 0, 0, 0.35);
@@ -42,12 +42,13 @@ html[data-theme="dark"] {
 html {
   scroll-behavior: smooth;
   background: var(--bg);
+  color-scheme: light dark;
 }
 
 body {
   margin: 0;
   font-family: "Manrope", "Segoe UI", sans-serif;
-  background: radial-gradient(circle at 15% 0%, var(--bg-soft) 0%, var(--bg) 45%);
+  background: radial-gradient(circle at 15% 0%, color-mix(in srgb, var(--bg-soft) 72%, transparent) 0%, var(--bg) 48%);
   color: var(--text);
   min-height: 100vh;
   transition: background-color 0.25s ease, color 0.25s ease;
