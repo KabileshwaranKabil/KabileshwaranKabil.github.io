@@ -5,13 +5,56 @@
       <div class="footer-tagline">Learning in public • Writing, building, and sharing progress.</div>
     </div>
     <div class="footer-meta">
+      {%- if jekyll.environment == 'production' -%}
+      <div class="footer-ad">
+        <!-- Footer AdSense placeholder -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-REPLACE_WITH_YOUR_ID"
+             data-ad-slot="REPLACE_WITH_FOOTER_SLOT"
+             data-ad-format="auto"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+      {%- endif -%}
       <div>© {{ "now" | date: "%Y" }} {{ site.author | default: site.title | escape }}. All rights reserved.</div>
       <div class="footer-links">
         <a href="{{ '/about' | relative_url }}">About</a>
         <a href="{{ '/projects' | relative_url }}">Projects</a>
+        <a href="{{ '/portfolio' | relative_url }}">Portfolio</a>
         <a href="{{ '/posts' | relative_url }}">Blog</a>
         <a href="{{ '/review' | relative_url }}">Review</a>
+        <a href="{{ '/contact' | relative_url }}">Contact</a>
       </div>
     </div>
   </div>
 </footer>
+
+<!-- Simple cookie / ads consent banner -->
+<div id="consent-banner" style="position:fixed;left:0;right:0;bottom:0;background:#fff;padding:12px;box-shadow:0 -2px 6px rgba(0,0,0,.08);display:none;z-index:9999;">
+  <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;">
+    <div style="font-size:14px;color:#111;">We use ads to support this site. By continuing, you agree to cookies used for ads. See our <a href="{{ '/privacy' | relative_url }}">Privacy Policy</a>.</div>
+    <div>
+      <button id="consent-accept" style="padding:8px 12px;margin-right:8px;">Accept</button>
+      <button id="consent-decline" style="padding:8px 12px;">Decline</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function(){
+    try {
+      var consent = localStorage.getItem('adsConsent');
+      var banner = document.getElementById('consent-banner');
+      if (!consent) { banner.style.display = 'block'; }
+      document.getElementById('consent-accept').onclick = function(){
+        localStorage.setItem('adsConsent','yes');
+        banner.style.display='none';
+        window.location.reload();
+      };
+      document.getElementById('consent-decline').onclick = function(){
+        localStorage.setItem('adsConsent','no');
+        banner.style.display='none';
+      };
+    } catch (e) { /* ignore */ }
+  })();
+</script>

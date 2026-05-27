@@ -26,6 +26,29 @@ layout: default
     {{ content }}
   </div>
 
+  {%- if jekyll.environment == 'production' -%}
+  <div id="post-ad-container" class="post-ad"></div>
+  <script>
+    (function(){
+      try {
+        var consent = localStorage.getItem('adsConsent');
+        if (consent === 'no') return; // user declined
+        var cont = document.getElementById('post-ad-container');
+        if (!cont) return;
+        var ins = document.createElement('ins');
+        ins.className = 'adsbygoogle';
+        ins.style.display = 'block';
+        ins.setAttribute('data-ad-client','ca-pub-REPLACE_WITH_YOUR_ID');
+        ins.setAttribute('data-ad-slot','REPLACE_WITH_AD_SLOT');
+        ins.setAttribute('data-ad-format','auto');
+        ins.setAttribute('data-full-width-responsive','true');
+        cont.appendChild(ins);
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      } catch(e) { /* ignore errors */ }
+    })();
+  </script>
+  {%- endif -%}
+
   {% if page.tags %}
     <div class="post-tags">
       <strong>Tags:</strong>
