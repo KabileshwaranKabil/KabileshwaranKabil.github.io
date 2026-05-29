@@ -11,6 +11,18 @@
 
     <button id="installAppBtn" class="install-app-btn" type="button" hidden>Install App</button>
 
+    <section class="install-banner reveal" id="installBanner" hidden aria-label="Install app prompt">
+      <div>
+        <p class="install-banner-eyebrow">Mobile app mode</p>
+        <p class="install-banner-title">Install Study Review on your phone</p>
+        <p class="install-banner-copy">Open it from the home screen for quicker daily access and offline reading.</p>
+      </div>
+      <div class="install-banner-actions">
+        <button class="ghost-btn install-banner-button" id="installBannerButton" type="button">Install</button>
+        <button class="ghost-btn install-banner-dismiss" id="dismissInstallBanner" type="button">Not now</button>
+      </div>
+    </section>
+
     <main class="page-content" aria-label="Content">
       <div class="wrapper app-content-wrap">
         {{ content }}

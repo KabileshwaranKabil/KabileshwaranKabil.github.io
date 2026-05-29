@@ -3,6 +3,14 @@
 
   const STORAGE_KEYS = {
     theme: "theme",
+
+  function isStandaloneMode() {
+    return window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
+  }
+
+  function isMobileViewport() {
+    return window.matchMedia("(max-width: 859px)").matches || window.matchMedia("(pointer: coarse)").matches;
+  }
     streak: "study-streak",
     dailyTasks: "daily-tasks",
     weeklyGoal: "weekly-goal",
@@ -488,6 +496,31 @@
 
   function initPWAInstall() {
     const installButton = document.getElementById("installAppBtn");
+    const installBanner = document.getElementById("installBanner");
+    const installBannerButton = document.getElementById("installBannerButton");
+    const dismissInstallBanner = document.getElementById("dismissInstallBanner");
+    const installBannerCopy = installBanner ? installBanner.querySelector(".install-banner-copy") : null;
+
+    const updateInstallUI = () => {
+      const bannerDismissed = localStorage.getItem("install-banner-dismissed") === "true";
+      const shouldShowBanner = isMobileViewport() && !isStandaloneMode() && !bannerDismissed;
+      const shouldShowPrompt = Boolean(deferredInstallPrompt) && !isStandaloneMode();
+
+      if (installButton) {
+        installButton.hidden = !shouldShowPrompt;
+      }
+      if (installBanner) {
+        installBanner.hidden = !shouldShowBanner;
+        if (installBannerCopy) {
+          installBannerCopy.textContent = shouldShowPrompt
+            ? "Open it from the home screen for quicker daily access and offline reading."
+            : "On iPhone or unsupported browsers, use the share menu to add it to your home screen for quick daily access.";
+        }
+      }
+      if (installBannerButton) {
+        installBannerButton.hidden = !shouldShowPrompt;
+      }
+    };
 
     if ("serviceWorker" in navigator) {
       const swUrl = document.body.dataset.swUrl || "/sw.js";
@@ -497,13 +530,33 @@
     }
 
     if (!installButton) {
+      if (installBannerButton) {
+        installBannerButton.addEventListener("click", async () => {
+          if (!deferredInstallPrompt) {
+            return;
+          }
+          deferredInstallPrompt.prompt();
+          await deferredInstallPrompt.userChoice;
+          deferredInstallPrompt = null;
+          updateInstallUI();
+        });
+      }
+
+      if (dismissInstallBanner) {
+        dismissInstallBanner.addEventListener("click", () => {
+          localStorage.setItem("install-banner-dismissed", "true");
+          updateInstallUI();
+        });
+      }
+
+      updateInstallUI();
       return;
     }
 
     window.addEventListener("beforeinstallprompt", (event) => {
       event.preventDefault();
       deferredInstallPrompt = event;
-      installButton.hidden = false;
+      updateInstallUI();
     });
 
     installButton.addEventListener("click", async () => {
@@ -513,12 +566,35 @@
       deferredInstallPrompt.prompt();
       await deferredInstallPrompt.userChoice;
       deferredInstallPrompt = null;
-      installButton.hidden = true;
+      updateInstallUI();
     });
 
     window.addEventListener("appinstalled", () => {
-      installButton.hidden = true;
+      deferredInstallPrompt = null;
+      localStorage.removeItem("install-banner-dismissed");
+      updateInstallUI();
     });
+
+    if (installBannerButton) {
+      installBannerButton.addEventListener("click", async () => {
+        if (!deferredInstallPrompt) {
+          return;
+        }
+        deferredInstallPrompt.prompt();
+        await deferredInstallPrompt.userChoice;
+        deferredInstallPrompt = null;
+        updateInstallUI();
+      });
+    }
+
+    if (dismissInstallBanner) {
+      dismissInstallBanner.addEventListener("click", () => {
+        localStorage.setItem("install-banner-dismissed", "true");
+        updateInstallUI();
+      });
+    }
+
+    updateInstallUI();
   }
 
   document.addEventListener("DOMContentLoaded", () => {

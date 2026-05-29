@@ -5,9 +5,36 @@
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
   "background_color": "#f4f4f5",
   "theme_color": "#111214",
   "orientation": "portrait-primary",
+  "shortcuts": [
+    {
+      "name": "Daily Review",
+      "short_name": "Review",
+      "description": "Open the daily review planner",
+      "url": "/review"
+    },
+    {
+      "name": "Learning Notes",
+      "short_name": "Notes",
+      "description": "Open saved notes and reflections",
+      "url": "/notes"
+    },
+    {
+      "name": "DSA Revision",
+      "short_name": "DSA",
+      "description": "Jump into data structures and algorithms",
+      "url": "/dsa"
+    },
+    {
+      "name": "Blog Posts",
+      "short_name": "Blog",
+      "description": "Browse all posts",
+      "url": "/posts"
+    }
+  ],
   "icons": [
     {
       "src": "/assets/images/app-icon.svg",

@@ -1,17 +1,41 @@
-const CACHE_VERSION = "study-review-v1";
+const CACHE_VERSION = "study-review-v2";
 const CORE_CACHE = `core-${CACHE_VERSION}`;
 const RUNTIME_CACHE = `runtime-${CACHE_VERSION}`;
 
 const CORE_ASSETS = [
   "./",
+  "./about",
+  "./contact",
+  "./dsa",
   "./index.html",
   "./offline.html",
   "./manifest.json",
   "./assets/css/style.css",
   "./assets/js/app.js",
   "./assets/images/profile.png",
-  "./assets/images/app-icon.svg"
+  "./assets/images/app-icon.svg",
+  "./notes",
+  "./portfolio",
+  "./posts",
+  "./projects",
+  "./privacy",
+  "./reflections",
+  "./review"
 ];
+
+const NAVIGATION_FALLBACKS = new Set([
+  "/",
+  "/about",
+  "/contact",
+  "/dsa",
+  "/notes",
+  "/portfolio",
+  "/posts",
+  "/projects",
+  "/privacy",
+  "/reflections",
+  "/review"
+]);
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
@@ -33,12 +57,16 @@ self.addEventListener("activate", (event) => {
 
 self.addEventListener("fetch", (event) => {
   const request = event.request;
+  const url = new URL(request.url);
 
   if (request.method !== "GET") {
     return;
   }
 
   if (request.mode === "navigate") {
+    const pathname = url.pathname.endsWith("/") ? url.pathname.slice(0, -1) : url.pathname;
+    const isAppRoute = NAVIGATION_FALLBACKS.has(pathname);
+
     event.respondWith(
       fetch(request)
         .then((response) => {
@@ -48,7 +76,13 @@ self.addEventListener("fetch", (event) => {
         })
         .catch(async () => {
           const cached = await caches.match(request);
-          return cached || caches.match("./offline.html");
+          if (cached) {
+            return cached;
+          }
+          if (isAppRoute) {
+            return caches.match("./offline.html");
+          }
+          return caches.match("./offline.html");
         })
     );
     return;

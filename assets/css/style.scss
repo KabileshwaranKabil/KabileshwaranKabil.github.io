@@ -623,6 +623,64 @@ textarea:focus {
   box-shadow: var(--shadow-sm);
 }
 
+.install-banner {
+  margin: 0.9rem 0 1rem;
+  padding: 0.95rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: linear-gradient(145deg, color-mix(in srgb, var(--surface-solid) 90%, transparent), var(--surface));
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.9rem;
+}
+
+.install-banner-eyebrow {
+  margin: 0 0 0.2rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-soft);
+}
+
+.install-banner-title {
+  margin: 0;
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.install-banner-copy {
+  margin: 0.22rem 0 0;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: var(--text-soft);
+}
+
+.install-banner-actions {
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.install-banner-button,
+.install-banner-dismiss {
+  min-height: 36px;
+  padding: 0 0.85rem;
+}
+
+.install-banner-button {
+  background: var(--accent);
+  color: var(--bg) !important;
+}
+
+.install-banner-dismiss {
+  background: transparent;
+}
+
 .fab {
   position: fixed;
   right: 1rem;
@@ -968,9 +1026,27 @@ textarea:focus {
   .site-footer {
     padding-bottom: 1.3rem;
   }
+
+  .install-banner {
+    display: none;
+  }
 }
 
 @media (max-width: 859px) {
+  .install-app-btn {
+    display: none;
+  }
+
+  .install-banner {
+    margin-top: 0.8rem;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .install-banner-actions {
+    justify-content: flex-start;
+  }
+
   .site-nav .trigger {
     display: none;
     position: absolute;
@@ -1012,6 +1088,12 @@ textarea:focus {
 
   .reading-progress-track {
     top: 58px;
+  }
+
+  .bottom-nav-link {
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: 0.3rem 0.15rem;
   }
 }
 
