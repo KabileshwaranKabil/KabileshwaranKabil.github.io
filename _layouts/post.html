@@ -26,29 +26,6 @@ layout: default
     {{ content }}
   </div>
 
-  {%- if jekyll.environment == 'production' -%}
-  <div id="post-ad-container" class="post-ad"></div>
-  <script>
-    (function(){
-      try {
-        var consent = localStorage.getItem('adsConsent');
-        if (consent === 'no') return; // user declined
-        var cont = document.getElementById('post-ad-container');
-        if (!cont) return;
-        var ins = document.createElement('ins');
-        ins.className = 'adsbygoogle';
-        ins.style.display = 'block';
-        ins.setAttribute('data-ad-client','ca-pub-REPLACE_WITH_YOUR_ID');
-        ins.setAttribute('data-ad-slot','REPLACE_WITH_AD_SLOT');
-        ins.setAttribute('data-ad-format','auto');
-        ins.setAttribute('data-full-width-responsive','true');
-        cont.appendChild(ins);
-        (adsbygoogle = window.adsbygoogle || []).push({});
-      } catch(e) { /* ignore errors */ }
-    })();
-  </script>
-  {%- endif -%}
-
   {% if page.tags %}
     <div class="post-tags">
       <strong>Tags:</strong>
@@ -69,15 +46,26 @@ layout: default
     <button type="button" onclick="navigator.clipboard.writeText('{{ page.url | absolute_url }}'); alert('Link copied!');">Copy link</button>
   </div>
 
-  <!-- Comments Section using utterances -->
   <div class="comments-section">
-    <h2>Comments</h2>
-    <script src="https://utteranc.es/client.js"
-            repo="KabileshwaranKabil/KabileshwaranKabil.github.io"
-            issue-term="pathname"
-            theme="github-light"
-            crossorigin="anonymous"
-            async>
-    </script>
+    <div class="comments-header">
+      <h2>Comments</h2>
+      <p>Questions, corrections, and practical takeaways are welcome here.</p>
+    </div>
+    {% if site.comments.provider == 'utterances' and site.comments.utterances.repo %}
+      <div class="comments-thread" aria-live="polite">
+        <script src="https://utteranc.es/client.js"
+                repo="{{ site.comments.utterances.repo }}"
+                issue-term="{{ site.comments.utterances.issue_term | default: 'pathname' }}"
+                theme="{{ site.comments.utterances.theme | default: 'github-light' }}"
+                crossorigin="anonymous"
+                async>
+        </script>
+      </div>
+      <noscript>
+        <p class="comments-disabled">Enable JavaScript to load the discussion thread.</p>
+      </noscript>
+    {% else %}
+      <p class="comments-disabled">Comments are not configured for this site yet.</p>
+    {% endif %}
   </div>
 </article>
