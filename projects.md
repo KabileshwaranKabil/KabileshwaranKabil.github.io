@@ -14,8 +14,8 @@ Check out a few highlighted projects below. Replace images and links with your r
 
 <div class="projects-grid">
 {% include project-card.html title="Personal Blog (This Site)" url="/" image="/assets/images/project-blog.png" description="A Jekyll-based blog and portfolio with DSA notes, tutorials, and project showcases." tags="Jekyll · Markdown · GitHub Pages" %}
-{% include project-card.html title="DSA Practice Suite" url="/projects/dsa-practice" image="/assets/images/project-dsa.png" description="Collection of Java-based DSA implementations, exercises, and explanations for students." tags="Java · Algorithms · Data Structures" %}
-{% include project-card.html title="Data Science Mini-Course" url="/projects/data-mini-course" image="/assets/images/project-ds.png" description="Hands-on Pandas & NumPy tutorial notebooks and exercises aimed at CS students." tags="Python · Pandas · NumPy" %}
+{% include project-card.html title="DSA Practice Suite" url="/projects/dsa-practice" image="/assets/images/logo.svg" description="Collection of Java-based DSA implementations, exercises, and explanations for students." tags="Java · Algorithms · Data Structures" %}
+{% include project-card.html title="Data Science Mini-Course" url="/projects/data-mini-course" image="/assets/images/app-icon.svg" description="Hands-on Pandas & NumPy tutorial notebooks and exercises aimed at CS students." tags="Python · Pandas · NumPy" %}
 </div>
 
 <!-- Guidance -->
