@@ -3,6 +3,11 @@
 
   const STORAGE_KEYS = {
     theme: "theme",
+    streak: "study-streak",
+    dailyTasks: "daily-tasks",
+    weeklyGoal: "weekly-goal",
+    topicProgress: "topic-progress"
+  };
 
   function isStandaloneMode() {
     return window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
@@ -11,11 +16,6 @@
   function isMobileViewport() {
     return window.matchMedia("(max-width: 859px)").matches || window.matchMedia("(pointer: coarse)").matches;
   }
-    streak: "study-streak",
-    dailyTasks: "daily-tasks",
-    weeklyGoal: "weekly-goal",
-    topicProgress: "topic-progress"
-  };
 
   let deferredInstallPrompt = null;
 

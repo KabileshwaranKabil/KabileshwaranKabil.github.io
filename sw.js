@@ -38,8 +38,15 @@ const NAVIGATION_FALLBACKS = new Set([
 ]);
 
 self.addEventListener("install", (event) => {
+  // Precache core assets but don't fail the install if some resources fail.
   event.waitUntil(
-    caches.open(CORE_CACHE).then((cache) => cache.addAll(CORE_ASSETS)).then(() => self.skipWaiting())
+    caches.open(CORE_CACHE)
+      .then((cache) =>
+        Promise.allSettled(
+          CORE_ASSETS.map((asset) => cache.add(asset).catch(() => null))
+        )
+      )
+      .then(() => self.skipWaiting())
   );
 });
 

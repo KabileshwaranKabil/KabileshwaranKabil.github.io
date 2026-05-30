@@ -3,7 +3,7 @@
   {%- include head.html -%}
   <body data-base-url="{{ '/' | relative_url }}" data-sw-url="{{ '/sw.js' | relative_url }}">
     <div class="app-splash" id="appSplash" aria-hidden="true">
-      <img src="{{ '/assets/images/profile.png' | relative_url }}" alt="{{ site.title | escape }}" class="splash-avatar" />
+      <img src="{{ '/assets/images/profile.png' | relative_url }}" alt="{{ site.title | escape }}" class="splash-avatar" loading="lazy" />
       <p class="splash-title">Study Review</p>
     </div>
 

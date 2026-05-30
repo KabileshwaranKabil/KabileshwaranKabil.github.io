@@ -49,6 +49,12 @@ plugins:
   - jekyll-seo-tag
   - jekyll-paginate
 
+# Collection for DSA / LeetCode solutions
+collections:
+  dsa:
+    output: true
+    permalink: /dsa/:path/
+
 markdown: kramdown
 
 # Syntax highlighting
