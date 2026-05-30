@@ -1,7 +1,10 @@
 <header class="site-header" role="banner">
   <div class="wrapper">
-    <div class="site-brand">
-      <img class="site-avatar" src="{{ '/assets/images/profile.png' | relative_url }}" alt="{{ site.title | escape }}" loading="lazy" />
+      <div class="site-brand">
+      <picture>
+        <source srcset="{{ '/assets/images/optimized/profile-320.webp' | relative_url }} 320w, {{ '/assets/images/optimized/profile-720.webp' | relative_url }} 720w" type="image/webp">
+        <img class="site-avatar" src="{{ '/assets/images/profile.png' | relative_url }}" alt="{{ site.title | escape }}" loading="lazy" />
+      </picture>
       <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
     </div>
     <nav class="site-nav" role="navigation" aria-label="Main navigation">

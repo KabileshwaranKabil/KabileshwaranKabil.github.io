@@ -1,6 +1,8 @@
 const CACHE_VERSION = "study-review-v2";
 const CORE_CACHE = `core-${CACHE_VERSION}`;
 const RUNTIME_CACHE = `runtime-${CACHE_VERSION}`;
+const IMAGE_CACHE = `images-${CACHE_VERSION}`;
+const IMAGE_CACHE_MAX_ENTRIES = 60;
 
 const CORE_ASSETS = [
   "./",
@@ -96,20 +98,41 @@ self.addEventListener("fetch", (event) => {
   }
 
   event.respondWith(
-    caches.match(request).then((cached) => {
-      if (cached) {
-        return cached;
-      }
-      return fetch(request)
-        .then((response) => {
-          if (!response || response.status !== 200 || response.type === "opaque") {
-            return response;
+    (async function() {
+      // images: use separate runtime cache with eviction
+      if (request.destination === 'image') {
+        const cache = await caches.open(IMAGE_CACHE);
+        const cached = await cache.match(request);
+        if (cached) return cached;
+        try {
+          const response = await fetch(request);
+          if (response && response.status === 200) {
+            cache.put(request, response.clone());
+            // trim cache
+            cache.keys().then(keys => {
+              if (keys.length > IMAGE_CACHE_MAX_ENTRIES) {
+                cache.delete(keys[0]);
+              }
+            });
           }
-          const clone = response.clone();
-          caches.open(RUNTIME_CACHE).then((cache) => cache.put(request, clone));
           return response;
-        })
-        .catch(() => caches.match("./offline.html"));
-    })
+        } catch (e) {
+          return caches.match('./offline.html');
+        }
+      }
+
+      const cached = await caches.match(request);
+      if (cached) return cached;
+      try {
+        const response = await fetch(request);
+        if (response && response.status === 200 && response.type !== 'opaque') {
+          const clone = response.clone();
+          caches.open(RUNTIME_CACHE).then(cache => cache.put(request, clone));
+        }
+        return response;
+      } catch (e) {
+        return caches.match('./offline.html');
+      }
+    })()
   );
 });
