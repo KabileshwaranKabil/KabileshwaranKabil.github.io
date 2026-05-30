@@ -2,6 +2,7 @@
 <html lang="{{ page.lang | default: site.lang | default: "en" }}">
   {%- include head.html -%}
   <body data-base-url="{{ '/' | relative_url }}" data-sw-url="{{ '/sw.js' | relative_url }}">
+    <a class="sr-only" href="#main-content">Skip to content</a>
     <div class="app-splash" id="appSplash" aria-hidden="true">
       <img src="{{ '/assets/images/profile.png' | relative_url }}" alt="{{ site.title | escape }}" class="splash-avatar" loading="lazy" />
       <p class="splash-title">Study Review</p>
@@ -23,7 +24,7 @@
       </div>
     </section>
 
-    <main class="page-content" aria-label="Content">
+    <main id="main-content" class="page-content" role="main" aria-label="Content">
       <div class="wrapper app-content-wrap">
         {{ content }}
       </div>

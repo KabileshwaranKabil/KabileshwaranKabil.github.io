@@ -597,12 +597,60 @@
     updateInstallUI();
   }
 
+  function initCodeBlocks() {
+    // announcer for screen readers
+    let announcer = document.querySelector('.code-announce');
+    if (!announcer) {
+      announcer = document.createElement('div');
+      announcer.className = 'code-announce';
+      announcer.setAttribute('aria-live', 'polite');
+      document.body.appendChild(announcer);
+    }
+
+    const codeBlocks = document.querySelectorAll('pre > code');
+    codeBlocks.forEach((code) => {
+      const pre = code.parentElement;
+      if (!pre) return;
+      const container = document.createElement('div');
+      container.className = 'code-block';
+      pre.parentNode.insertBefore(container, pre);
+      container.appendChild(pre);
+
+      // add copy button
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'copy-btn';
+      btn.setAttribute('aria-label', 'Copy code');
+      btn.innerHTML = 'Copy';
+      container.appendChild(btn);
+
+      btn.addEventListener('click', async () => {
+        const text = code.textContent;
+        try {
+          await navigator.clipboard.writeText(text);
+          btn.textContent = 'Copied';
+          announcer.textContent = 'Code copied to clipboard';
+          setTimeout(() => (btn.textContent = 'Copy'), 1800);
+        } catch (err) {
+          // fallback
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          document.body.appendChild(ta);
+          ta.select();
+          try { document.execCommand('copy'); announcer.textContent = 'Code copied to clipboard'; } catch (e) { announcer.textContent = 'Copy failed'; }
+          ta.remove();
+        }
+      });
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     initThemeToggle();
     initActiveNavigation();
     initRevealAnimations();
     initSplash();
     initPWAInstall();
+    initCodeBlocks();
 
     updateStreak();
     initDailyTaskForm();
