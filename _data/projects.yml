@@ -1,0 +1,55 @@
+- title: "BusNow LK"
+  url: "https://github.com/KabileshwaranKabil/busnow-lk"
+  type: "Web App"
+  stack: ["Python", "Data", "Transport Analytics"]
+  description: "Realtime smart public transport tracking and analytics platform for Sri Lanka."
+  featured: true
+
+- title: "DSA Learning Lab"
+  url: "https://github.com/KabileshwaranKabil/dsa-learning-lab"
+  type: "Learning System"
+  stack: ["JavaScript", "DSA", "LeetCode"]
+  description: "Structured DSA learning repository documenting solutions, patterns, and problem-solving notes."
+  featured: true
+
+- title: "AI / ML Engineering Journey"
+  url: "https://github.com/KabileshwaranKabil/ai-ml-engineering-journey"
+  type: "Learning Track"
+  stack: ["Python", "Machine Learning", "Deep Learning"]
+  description: "A structured learning path documenting AI, ML engineering, and practical project work."
+  featured: true
+
+- title: "Build With JavaScript"
+  url: "https://github.com/KabileshwaranKabil/build-with-javascript"
+  type: "Project Journey"
+  stack: ["JavaScript", "Frontend", "Mini Apps"]
+  description: "Project-based JavaScript journey focused on practical applications and modern web development."
+  featured: true
+
+- title: "SQL Mastery Journey"
+  url: "https://github.com/KabileshwaranKabil/sql-mastery-journey"
+  type: "Learning Track"
+  stack: ["SQL", "MySQL", "Databases"]
+  description: "Structured SQL and MySQL practice repository with exercises, notes, and query drills."
+  featured: false
+
+- title: "Python Projects"
+  url: "https://github.com/KabileshwaranKabil/python-projects"
+  type: "Mini Projects"
+  stack: ["Python", "CLI", "Automation"]
+  description: "Beginner-friendly Python mini-projects to strengthen programming fundamentals."
+  featured: false
+
+- title: "Kabileshwaran Portfolio"
+  url: "https://github.com/KabileshwaranKabil/kabileshwaran-portfolio"
+  type: "Website"
+  stack: ["HTML", "CSS", "JavaScript"]
+  description: "A structured and responsive personal portfolio website built with core web technologies."
+  featured: false
+
+- title: "Personal Blog Django"
+  url: "https://github.com/KabileshwaranKabil/personal-blog-django"
+  type: "Backend App"
+  stack: ["Django", "Python", "Blog"]
+  description: "Simple but structured blog application built with Django for learning and portfolio use."
+  featured: false

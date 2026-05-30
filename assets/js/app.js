@@ -3,10 +3,7 @@
 
   const STORAGE_KEYS = {
     theme: "theme",
-    streak: "study-streak",
-    dailyTasks: "daily-tasks",
-    weeklyGoal: "weekly-goal",
-    topicProgress: "topic-progress"
+    streak: "study-streak"
   };
 
   function isStandaloneMode() {
@@ -159,240 +156,6 @@
     }
   }
 
-  function getDailyTasks() {
-    const data = safeParse(localStorage.getItem(STORAGE_KEYS.dailyTasks), []);
-    return Array.isArray(data) ? data : [];
-  }
-
-  function saveDailyTasks(tasks) {
-    localStorage.setItem(STORAGE_KEYS.dailyTasks, JSON.stringify(tasks));
-    updateDashboardTaskCount(tasks);
-    updatePlannerPreview(tasks);
-  }
-
-  function updateDashboardTaskCount(tasks) {
-    const countEl = document.getElementById("todayChecklistDone");
-    if (!countEl) {
-      return;
-    }
-    const done = tasks.filter((task) => task.done).length;
-    countEl.textContent = `${done} tasks`;
-  }
-
-  function updatePlannerPreview(tasks) {
-    const previewList = document.getElementById("previewTaskList");
-    if (!previewList) {
-      return;
-    }
-
-    previewList.innerHTML = "";
-    const list = tasks.length ? tasks.slice(0, 4) : [
-      { text: "Revise one topic", done: false },
-      { text: "Read one saved note", done: false },
-      { text: "Write one quick summary", done: false }
-    ];
-
-    list.forEach((task) => {
-      const item = document.createElement("li");
-      item.className = task.done ? "done" : "";
-      item.textContent = task.text;
-      previewList.appendChild(item);
-    });
-  }
-
-  function renderDailyTaskList() {
-    const taskList = document.getElementById("dailyTaskList");
-    if (!taskList) {
-      return;
-    }
-
-    const tasks = getDailyTasks();
-    taskList.innerHTML = "";
-
-    tasks.forEach((task) => {
-      const item = document.createElement("li");
-      item.className = "task-item";
-      item.dataset.id = task.id;
-
-      const label = document.createElement("label");
-      label.className = "task-toggle";
-
-      const checkbox = document.createElement("input");
-      checkbox.type = "checkbox";
-      checkbox.checked = Boolean(task.done);
-      checkbox.addEventListener("change", () => {
-        const current = getDailyTasks();
-        const next = current.map((entry) =>
-          entry.id === task.id ? { ...entry, done: checkbox.checked } : entry
-        );
-        saveDailyTasks(next);
-        renderDailyTaskList();
-      });
-
-      const text = document.createElement("span");
-      text.textContent = task.text;
-      if (task.done) {
-        text.classList.add("done");
-      }
-
-      const removeButton = document.createElement("button");
-      removeButton.type = "button";
-      removeButton.className = "task-remove";
-      removeButton.textContent = "Remove";
-      removeButton.addEventListener("click", () => {
-        const next = getDailyTasks().filter((entry) => entry.id !== task.id);
-        saveDailyTasks(next);
-        renderDailyTaskList();
-      });
-
-      label.appendChild(checkbox);
-      label.appendChild(text);
-      item.appendChild(label);
-      item.appendChild(removeButton);
-      taskList.appendChild(item);
-    });
-
-    updateDashboardTaskCount(tasks);
-    updatePlannerPreview(tasks);
-  }
-
-  function initDailyTaskForm() {
-    const form = document.getElementById("dailyTaskForm");
-    const input = document.getElementById("dailyTaskInput");
-
-    if (!form || !input) {
-      updatePlannerPreview(getDailyTasks());
-      updateDashboardTaskCount(getDailyTasks());
-      return;
-    }
-
-    renderDailyTaskList();
-
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
-      const value = input.value.trim();
-      if (!value) {
-        return;
-      }
-
-      const tasks = getDailyTasks();
-      tasks.unshift({
-        id: Date.now().toString(36),
-        text: value,
-        done: false
-      });
-      saveDailyTasks(tasks);
-      input.value = "";
-      renderDailyTaskList();
-    });
-  }
-
-  function getTopics() {
-    const data = safeParse(localStorage.getItem(STORAGE_KEYS.topicProgress), []);
-    return Array.isArray(data) ? data : [];
-  }
-
-  function saveTopics(topics) {
-    localStorage.setItem(STORAGE_KEYS.topicProgress, JSON.stringify(topics));
-  }
-
-  function renderTopics() {
-    const list = document.getElementById("topicProgressList");
-    if (!list) {
-      return;
-    }
-
-    const topics = getTopics();
-    list.innerHTML = "";
-
-    topics.forEach((topic) => {
-      const item = document.createElement("li");
-      item.className = "task-item";
-
-      const label = document.createElement("label");
-      label.className = "task-toggle";
-
-      const checkbox = document.createElement("input");
-      checkbox.type = "checkbox";
-      checkbox.checked = Boolean(topic.done);
-      checkbox.addEventListener("change", () => {
-        const next = getTopics().map((entry) =>
-          entry.id === topic.id ? { ...entry, done: checkbox.checked } : entry
-        );
-        saveTopics(next);
-        renderTopics();
-      });
-
-      const text = document.createElement("span");
-      text.textContent = topic.text;
-      if (topic.done) {
-        text.classList.add("done");
-      }
-
-      const removeButton = document.createElement("button");
-      removeButton.type = "button";
-      removeButton.className = "task-remove";
-      removeButton.textContent = "Remove";
-      removeButton.addEventListener("click", () => {
-        const next = getTopics().filter((entry) => entry.id !== topic.id);
-        saveTopics(next);
-        renderTopics();
-      });
-
-      label.appendChild(checkbox);
-      label.appendChild(text);
-      item.appendChild(label);
-      item.appendChild(removeButton);
-      list.appendChild(item);
-    });
-  }
-
-  function initTopicForm() {
-    const form = document.getElementById("topicForm");
-    const input = document.getElementById("topicInput");
-    if (!form || !input) {
-      return;
-    }
-
-    renderTopics();
-
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
-      const value = input.value.trim();
-      if (!value) {
-        return;
-      }
-
-      const topics = getTopics();
-      topics.unshift({
-        id: Date.now().toString(36),
-        text: value,
-        done: false
-      });
-      saveTopics(topics);
-      input.value = "";
-      renderTopics();
-    });
-  }
-
-  function initWeeklyGoal() {
-    const input = document.getElementById("weeklyGoalInput");
-    const button = document.getElementById("saveWeeklyGoal");
-
-    if (!input || !button) {
-      return;
-    }
-
-    input.value = localStorage.getItem(STORAGE_KEYS.weeklyGoal) || "";
-    button.addEventListener("click", () => {
-      localStorage.setItem(STORAGE_KEYS.weeklyGoal, input.value.trim());
-      button.textContent = "Saved";
-      window.setTimeout(() => {
-        button.textContent = "Save Goal";
-      }, 900);
-    });
-  }
-
   function initPostSearch() {
     const searchInput = document.getElementById("postSearch");
     const postList = document.getElementById("postsList");
@@ -483,13 +246,6 @@
     window.addEventListener("scroll", showFab, { passive: true });
 
     fab.addEventListener("click", () => {
-      if (window.location.pathname.includes("/review")) {
-        const input = document.getElementById("dailyTaskInput");
-        if (input) {
-          input.focus();
-          return;
-        }
-      }
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
   }
@@ -651,13 +407,7 @@
     initSplash();
     initPWAInstall();
     initCodeBlocks();
-
-    updateStreak();
-    initDailyTaskForm();
-    initTopicForm();
-    initWeeklyGoal();
     initPostSearch();
-    initReadingProgress();
     initFab();
   });
 })();

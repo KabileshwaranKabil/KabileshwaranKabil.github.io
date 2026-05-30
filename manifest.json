@@ -1,7 +1,7 @@
 {
-  "name": "Study Review",
-  "short_name": "Review",
-  "description": "Daily learning review and revision planner by Kabileshwaran.",
+  "name": "Kabileshwaran | Learning, Building, Sharing",
+  "short_name": "Kabileshwaran",
+  "description": "A professional portfolio, projects, notes, and learning journey by Kabileshwaran.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
@@ -10,12 +10,6 @@
   "theme_color": "#111214",
   "orientation": "portrait-primary",
   "shortcuts": [
-    {
-      "name": "Daily Review",
-      "short_name": "Review",
-      "description": "Open the daily review planner",
-      "url": "/review"
-    },
     {
       "name": "Learning Notes",
       "short_name": "Notes",

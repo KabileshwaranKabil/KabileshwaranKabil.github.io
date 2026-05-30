@@ -4,7 +4,7 @@ layout: default
 
 <section class="dashboard-hero reveal">
   <div>
-    <p class="eyebrow">Daily Study App</p>
+    <p class="eyebrow">Software engineering portfolio</p>
     <h1 class="hero-title">{{ site.title }}</h1>
     <p class="hero-description">{{ site.description }}</p>
   </div>
@@ -13,19 +13,19 @@ layout: default
 
 <section class="dashboard-grid reveal">
   <article class="panel-card">
-    <h2>Daily Review</h2>
-    <p class="panel-sub">Stay consistent with one clear target today.</p>
+    <h2>Focus Areas</h2>
+    <p class="panel-sub">A concise view of the work that defines the portfolio.</p>
     <div class="metric-grid">
       <div class="metric-item">
-        <span class="metric-label">Study Streak</span>
-        <strong class="metric-value" id="studyStreakCount">0 days</strong>
+        <span class="metric-label">Projects</span>
+        <strong class="metric-value">8+</strong>
       </div>
       <div class="metric-item">
-        <span class="metric-label">Today</span>
-        <strong class="metric-value" id="todayChecklistDone">0 tasks</strong>
+        <span class="metric-label">Learning Tracks</span>
+        <strong class="metric-value">6</strong>
       </div>
     </div>
-    <a href="{{ '/review' | relative_url }}" class="ghost-btn">Open review planner</a>
+    <a href="{{ '/portfolio' | relative_url }}" class="ghost-btn">View portfolio</a>
   </article>
 
   <article class="panel-card">
@@ -39,12 +39,17 @@ layout: default
   </article>
 </section>
 
-<section class="panel-card reveal planner-preview" id="plannerPreview">
+<section class="panel-card reveal">
   <div class="section-head">
-    <h2>Daily Revision Checklist</h2>
-    <a href="{{ '/review' | relative_url }}">Manage</a>
+    <h2>Featured Projects</h2>
+    <a href="{{ '/projects' | relative_url }}">View all</a>
   </div>
-  <ul id="previewTaskList" class="task-preview-list"></ul>
+  <div class="projects-grid projects-grid--featured">
+    {% assign featured_projects = site.data.projects | where: 'featured', true %}
+    {% for project in featured_projects limit: 4 %}
+      {% include project-card.html title=project.title url=project.url description=project.description type=project.type stack=project.stack featured=project.featured %}
+    {% endfor %}
+  </div>
 </section>
 
 <section class="panel-card reveal">

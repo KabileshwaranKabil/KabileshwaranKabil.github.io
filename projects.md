@@ -1,115 +1,36 @@
 ---
-layout: page
+layout: default
 title: Projects
 permalink: /projects/
 ---
 
-# Projects
+<section class="page-hero reveal">
+  <p class="eyebrow">Selected work</p>
+  <h1 class="page-title">Projects</h1>
+  <p class="page-lead">A curated collection of projects, learning systems, and practical experiments from my GitHub account.</p>
+</section>
 
-Real-world projects building practical skills and applying Computer Science fundamentals.
+<section class="section-block reveal">
+  <div class="section-head">
+    <h2>Featured Projects</h2>
+    <span class="section-note">Open-source and hands-on work</span>
+  </div>
+  <div class="projects-grid projects-grid--featured">
+    {% assign featured_projects = site.data.projects | where: 'featured', true %}
+    {% for project in featured_projects %}
+      {% include project-card.html title=project.title url=project.url description=project.description type=project.type stack=project.stack featured=project.featured %}
+    {% endfor %}
+  </div>
+</section>
 
-## Featured Projects
-
-Check out a few highlighted projects below. Replace images and links with your real project pages.
-
-<div class="projects-grid">
-{% include project-card.html title="Personal Blog (This Site)" url="/" image="/assets/images/project-blog.png" description="A Jekyll-based blog and portfolio with DSA notes, tutorials, and project showcases." tags="Jekyll · Markdown · GitHub Pages" %}
-{% include project-card.html title="DSA Practice Suite" url="/projects/dsa-practice" image="/assets/images/logo.svg" description="Collection of Java-based DSA implementations, exercises, and explanations for students." tags="Java · Algorithms · Data Structures" %}
-{% include project-card.html title="Data Science Mini-Course" url="/projects/data-mini-course" image="/assets/images/app-icon.svg" description="Hands-on Pandas & NumPy tutorial notebooks and exercises aimed at CS students." tags="Python · Pandas · NumPy" %}
-</div>
-
-<!-- Guidance -->
-Replace the example cards and images with real project pages. Add `/assets/images/project-*` images for each project.
-
-## Project Posts
-
-<div class="scrollable-posts">
-{% for post in site.posts %}
-  {% if post.categories contains "Projects" %}
-    <div class="post-item-scroll">
-      <span class="post-date-scroll">{{ post.date | date: "%b %d, %Y" }}</span>
-      <a href="{{ post.url | relative_url }}" class="post-link-scroll">{{ post.title }}</a>
-    </div>
-  {% endif %}
-{% endfor %}
-</div>
-
-*Project documentation coming soon.*
-
-<style>
-.scrollable-posts {
-  max-height: 400px;
-  overflow-y: auto;
-  background: var(--surface);
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  padding: 20px;
-  margin: 20px 0;
-  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-.scrollable-posts::-webkit-scrollbar {
-  width: 8px;
-}
-
-.scrollable-posts::-webkit-scrollbar-track {
-  background: var(--background);
-  border-radius: 4px;
-}
-
-.scrollable-posts::-webkit-scrollbar-thumb {
-  background: var(--accent-color);
-  border-radius: 4px;
-}
-
-.scrollable-posts::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-dark);
-}
-
-.post-item-scroll {
-  padding: 12px 0;
-  border-bottom: 1px solid var(--border-color);
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  transition: all 0.3s ease;
-}
-
-.post-item-scroll:last-child {
-  border-bottom: none;
-}
-
-.post-item-scroll:hover {
-  background: var(--background);
-  padding-left: 10px;
-  margin-left: -10px;
-  margin-right: -10px;
-  padding-right: 10px;
-  border-radius: 8px;
-}
-
-.post-date-scroll {
-  font-size: 0.85rem;
-  color: var(--text-secondary) !important;
-  font-weight: 500;
-}
-
-.post-link-scroll {
-  color: var(--text-primary) !important;
-  text-decoration: none !important;
-  font-weight: 600;
-  font-size: 1.05rem;
-  transition: color 0.3s ease;
-}
-
-.post-link-scroll:hover {
-  color: var(--accent-color) !important;
-}
-
-@media (max-width: 768px) {
-  .scrollable-posts {
-    max-height: 300px;
-    padding: 15px;
-  }
-}
-</style>
+<section class="section-block reveal">
+  <div class="section-head">
+    <h2>All Projects</h2>
+    <span class="section-note">Direct links to GitHub repositories</span>
+  </div>
+  <div class="projects-grid">
+    {% for project in site.data.projects %}
+      {% include project-card.html title=project.title url=project.url description=project.description type=project.type stack=project.stack featured=project.featured %}
+    {% endfor %}
+  </div>
+</section>

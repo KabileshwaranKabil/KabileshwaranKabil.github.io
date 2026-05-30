@@ -8,7 +8,7 @@
         <source srcset="{{ '/assets/images/optimized/profile-720.webp' | relative_url }} 720w" type="image/webp">
         <img src="{{ '/assets/images/profile.png' | relative_url }}" alt="{{ site.title | escape }}" class="splash-avatar" loading="lazy" />
       </picture>
-      <p class="splash-title">Study Review</p>
+      <p class="splash-title">{{ site.title | escape }}</p>
     </div>
 
     {%- include header.html -%}
@@ -18,7 +18,7 @@
     <section class="install-banner reveal" id="installBanner" hidden aria-label="Install app prompt">
       <div>
         <p class="install-banner-eyebrow">Mobile app mode</p>
-        <p class="install-banner-title">Install Study Review on your phone</p>
+        <p class="install-banner-title">Install the portfolio on your phone</p>
         <p class="install-banner-copy">Open it from the home screen for quicker daily access and offline reading.</p>
       </div>
       <div class="install-banner-actions">
@@ -41,9 +41,6 @@
       </a>
       <a href="{{ '/posts' | relative_url }}" class="bottom-nav-link" data-route="/posts">
         <span>Blog</span>
-      </a>
-      <a href="{{ '/review' | relative_url }}" class="bottom-nav-link" data-route="/review">
-        <span>Review</span>
       </a>
       <a href="{{ '/notes' | relative_url }}" class="bottom-nav-link" data-route="/notes">
         <span>Notes</span>

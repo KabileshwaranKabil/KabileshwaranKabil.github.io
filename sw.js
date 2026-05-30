@@ -1,4 +1,4 @@
-const CACHE_VERSION = "study-review-v2";
+const CACHE_VERSION = "kabileshwaran-portfolio-v3";
 const CORE_CACHE = `core-${CACHE_VERSION}`;
 const RUNTIME_CACHE = `runtime-${CACHE_VERSION}`;
 const IMAGE_CACHE = `images-${CACHE_VERSION}`;
@@ -21,8 +21,7 @@ const CORE_ASSETS = [
   "./posts",
   "./projects",
   "./privacy",
-  "./reflections",
-  "./review"
+  "./reflections"
 ];
 
 const NAVIGATION_FALLBACKS = new Set([
@@ -35,8 +34,7 @@ const NAVIGATION_FALLBACKS = new Set([
   "/posts",
   "/projects",
   "/privacy",
-  "/reflections",
-  "/review"
+  "/reflections"
 ]);
 
 self.addEventListener("install", (event) => {
