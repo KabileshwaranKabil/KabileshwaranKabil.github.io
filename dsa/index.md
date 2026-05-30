@@ -15,6 +15,6 @@ permalink: /dsa/
     {% include dsa-card.html item=item %}
   {% endfor %}
   {% if items == empty %}
-    <p>No DSA solutions found. To add them, follow the integration instructions in <a href="/DSA_INTEGRATION.md">DSA_INTEGRATION.md</a>.</p>
+    <p>No DSA solutions found. To add them, follow the integration instructions in <a href="/DSA_INTEGRATION/">DSA Integration</a>.</p>
   {% endif %}
 </section>
