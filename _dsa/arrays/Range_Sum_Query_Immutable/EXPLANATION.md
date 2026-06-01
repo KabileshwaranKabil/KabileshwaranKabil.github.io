@@ -3,11 +3,11 @@ title: Explanation
 difficulty: ''
 language: Text
 tags: []
-excerpt: '## Range Sum Query - Immutable - 303 [**Read my solution in leetcode**](../Running_Sum_of_1d_Array)'
+excerpt: '## Range Sum Query - Immutable - 303 [**Read my solution in leetcode**](/dsa/arrays/Running_Sum_of_1d_Array/)'
 ---
 
 ## Range Sum Query - Immutable - 303
-[**Read my solution in leetcode**](../Running_Sum_of_1d_Array)
+[**Read my solution in leetcode**](/dsa/arrays/Running_Sum_of_1d_Array/)
 
 ```text
 Given an integer array nums, handle multiple queries of the following type:
