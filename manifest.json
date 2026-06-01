@@ -1,7 +1,7 @@
 {
-  "name": "Kabileshwaran | Learning, Building, Sharing",
+  "name": "Kabileshwaran | Learning in Public",
   "short_name": "Kabileshwaran",
-  "description": "A professional portfolio, projects, notes, and learning journey by Kabileshwaran.",
+  "description": "A study site for daily learning notes, DSA practice, reflections, and CS fundamentals.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

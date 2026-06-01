@@ -7,7 +7,6 @@ const IMAGE_CACHE_MAX_ENTRIES = 60;
 const CORE_ASSETS = [
   "./",
   "./about",
-  "./contact",
   "./dsa",
   "./index.html",
   "./offline.html",
@@ -17,9 +16,7 @@ const CORE_ASSETS = [
   "./assets/images/profile.png",
   "./assets/images/app-icon.svg",
   "./notes",
-  "./portfolio",
   "./posts",
-  "./projects",
   "./privacy",
   "./reflections"
 ];
@@ -27,12 +24,9 @@ const CORE_ASSETS = [
 const NAVIGATION_FALLBACKS = new Set([
   "/",
   "/about",
-  "/contact",
   "/dsa",
   "/notes",
-  "/portfolio",
   "/posts",
-  "/projects",
   "/privacy",
   "/reflections"
 ]);

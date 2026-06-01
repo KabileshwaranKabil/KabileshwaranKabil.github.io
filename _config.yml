@@ -10,14 +10,14 @@ lang: en
 
 timezone: Asia/Kolkata
 
-title: Kabileshwaran | Learning, Building, Sharing
+title: Kabileshwaran | Learning in Public
 
 author: Kabileshwaran
 
-tagline: Daily learnings, technical notes, and projects from my CS journey
+tagline: Daily learnings, technical notes, and reflections from my CS journey
 
 description: >-
-  A public record of my daily learnings, projects, and core Computer Science concepts as a Computer Science undergraduate.
+  A public record of daily learnings, DSA practice, technical notes, and core Computer Science concepts as a Computer Science undergraduate.
 
 url: "https://kabileshwarankabil.github.io"
 
@@ -42,7 +42,7 @@ comments:
   utterances:
     repo: KabileshwaranKabil/KabileshwaranKabil.github.io
     issue_term: pathname
-    theme: github-light
+    theme: preferred-color-scheme
 
 plugins:
   - jekyll-feed

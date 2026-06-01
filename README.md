@@ -5,7 +5,6 @@ Documenting what I learn daily while building strong Computer Science fundamenta
 ## Quick Navigation
 
 - **[📚 DSA](/dsa/)** - Data Structures & Algorithms learning and problem-solving
-- **[🛠 Projects](/projects/)** - Real-world projects and development insights
 - **[📝 Notes](/notes/)** - Daily learnings and technical notes
 - **[💭 Reflections](/reflections/)** - Thoughts on learning, progress, and mindset
 - **[ℹ️ About](/about/)** - More about me and my learning philosophy

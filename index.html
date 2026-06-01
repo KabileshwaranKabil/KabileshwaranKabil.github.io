@@ -4,7 +4,7 @@ layout: default
 
 <section class="dashboard-hero reveal">
   <div>
-    <p class="eyebrow">Software engineering portfolio</p>
+    <p class="eyebrow">Learning in public</p>
     <h1 class="hero-title">{{ site.title }}</h1>
     <p class="hero-description">{{ site.description }}</p>
   </div>
@@ -13,19 +13,19 @@ layout: default
 
 <section class="dashboard-grid reveal">
   <article class="panel-card">
-    <h2>Focus Areas</h2>
-    <p class="panel-sub">A concise view of the work that defines the portfolio.</p>
+    <h2>Study Focus</h2>
+    <p class="panel-sub">A concise view of the learning paths that define this site.</p>
     <div class="metric-grid">
       <div class="metric-item">
-        <span class="metric-label">Projects</span>
-        <strong class="metric-value">8+</strong>
+        <span class="metric-label">DSA Notes</span>
+        <strong class="metric-value">Library</strong>
       </div>
       <div class="metric-item">
-        <span class="metric-label">Learning Tracks</span>
-        <strong class="metric-value">6</strong>
+        <span class="metric-label">Writing</span>
+        <strong class="metric-value">Daily</strong>
       </div>
     </div>
-    <a href="{{ '/portfolio' | relative_url }}" class="ghost-btn">View portfolio</a>
+    <a href="{{ '/notes' | relative_url }}" class="ghost-btn">Open notes</a>
   </article>
 
   <article class="panel-card">
@@ -34,22 +34,9 @@ layout: default
       <a href="{{ '/dsa' | relative_url }}" class="quick-card">DSA Revision</a>
       <a href="{{ '/notes' | relative_url }}" class="quick-card">Learning Notes</a>
       <a href="{{ '/posts' | relative_url }}" class="quick-card">All Blog Posts</a>
-      <a href="{{ '/projects' | relative_url }}" class="quick-card">Projects</a>
+      <a href="{{ '/reflections' | relative_url }}" class="quick-card">Reflections</a>
     </div>
   </article>
-</section>
-
-<section class="panel-card reveal">
-  <div class="section-head">
-    <h2>Featured Projects</h2>
-    <a href="{{ '/projects' | relative_url }}">View all</a>
-  </div>
-  <div class="projects-grid projects-grid--featured">
-    {% assign featured_projects = site.data.projects | where: 'featured', true %}
-    {% for project in featured_projects limit: 4 %}
-      {% include project-card.html title=project.title url=project.url description=project.description type=project.type stack=project.stack featured=project.featured %}
-    {% endfor %}
-  </div>
 </section>
 
 <section class="panel-card reveal">

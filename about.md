@@ -10,13 +10,13 @@ Hi, I'm **Kabileshwaran**, a Computer Science undergraduate committed to learnin
 
 ## What I'm Doing
 
-I'm documenting my daily learnings, solving algorithmic problems, and building projects to improve my technical skills. This blog serves as a public record of my progress, mistakes, and insights.
+I'm documenting my daily learnings, solving algorithmic problems, and writing clear notes to improve my technical skills. This blog serves as a public record of my progress, mistakes, and insights.
 
 ## Focus Areas
 
 - **Data Structures & Algorithms**: Problem-solving patterns, complexity analysis, and optimization techniques
 - **Computer Science Fundamentals**: Operating systems, databases, networking, and system design
-- **Software Development**: Building real-world projects with clean, maintainable code
+- **Software Development**: Building small study tools, scripts, and practice solutions with clean, maintainable code
 - **Technical Writing**: Explaining concepts clearly and documenting my learning process
 
 ## Why Learning in Public?

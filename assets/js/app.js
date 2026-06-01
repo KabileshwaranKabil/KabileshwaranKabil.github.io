@@ -14,6 +14,17 @@
     return window.matchMedia("(max-width: 859px)").matches || window.matchMedia("(pointer: coarse)").matches;
   }
 
+  function isIOSDevice() {
+    return /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  }
+
+  function getInstallHelpMessage() {
+    if (isIOSDevice()) {
+      return "On iPhone or iPad, tap Share and choose Add to Home Screen. On other browsers, open the browser menu and look for Install app or Add to Home screen.";
+    }
+    return "Open the browser menu and choose Install app or Add to Home screen if the native prompt is not shown yet.";
+  }
+
   let deferredInstallPrompt = null;
 
   function getTodayString() {
@@ -257,6 +268,29 @@
     const dismissInstallBanner = document.getElementById("dismissInstallBanner");
     const installBannerCopy = installBanner ? installBanner.querySelector(".install-banner-copy") : null;
 
+    const promptInstall = async () => {
+      if (deferredInstallPrompt) {
+        deferredInstallPrompt.prompt();
+        await deferredInstallPrompt.userChoice;
+        deferredInstallPrompt = null;
+        updateInstallUI();
+        return;
+      }
+
+      const message = getInstallHelpMessage();
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+        } catch (error) {
+          // Ignore share cancellations and fall back to instructions.
+        }
+      }
+      window.alert(message);
+    };
+
     const updateInstallUI = () => {
       const bannerDismissed = localStorage.getItem("install-banner-dismissed") === "true";
       const shouldShowBanner = isMobileViewport() && !isStandaloneMode() && !bannerDismissed;
@@ -270,11 +304,12 @@
         if (installBannerCopy) {
           installBannerCopy.textContent = shouldShowPrompt
             ? "Open it from the home screen for quicker daily access and offline reading."
-            : "On iPhone or unsupported browsers, use the share menu to add it to your home screen for quick daily access.";
+            : getInstallHelpMessage();
         }
       }
       if (installBannerButton) {
-        installBannerButton.hidden = !shouldShowPrompt;
+        installBannerButton.hidden = false;
+        installBannerButton.textContent = shouldShowPrompt ? "Install" : "Add to Home Screen";
       }
     };
 
@@ -287,15 +322,7 @@
 
     if (!installButton) {
       if (installBannerButton) {
-        installBannerButton.addEventListener("click", async () => {
-          if (!deferredInstallPrompt) {
-            return;
-          }
-          deferredInstallPrompt.prompt();
-          await deferredInstallPrompt.userChoice;
-          deferredInstallPrompt = null;
-          updateInstallUI();
-        });
+        installBannerButton.addEventListener("click", promptInstall);
       }
 
       if (dismissInstallBanner) {
@@ -315,15 +342,7 @@
       updateInstallUI();
     });
 
-    installButton.addEventListener("click", async () => {
-      if (!deferredInstallPrompt) {
-        return;
-      }
-      deferredInstallPrompt.prompt();
-      await deferredInstallPrompt.userChoice;
-      deferredInstallPrompt = null;
-      updateInstallUI();
-    });
+    installButton.addEventListener("click", promptInstall);
 
     window.addEventListener("appinstalled", () => {
       deferredInstallPrompt = null;
@@ -332,15 +351,7 @@
     });
 
     if (installBannerButton) {
-      installBannerButton.addEventListener("click", async () => {
-        if (!deferredInstallPrompt) {
-          return;
-        }
-        deferredInstallPrompt.prompt();
-        await deferredInstallPrompt.userChoice;
-        deferredInstallPrompt = null;
-        updateInstallUI();
-      });
+      installBannerButton.addEventListener("click", promptInstall);
     }
 
     if (dismissInstallBanner) {
