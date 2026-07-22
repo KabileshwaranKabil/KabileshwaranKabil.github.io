@@ -91,7 +91,7 @@ http://localhost:8080
 
 redirects you to Spring Security's default login page.
 
-![alt text](img01-login.png)
+![alt text](imglogin.png)
 
 Spring Boot automatically creates a temporary user.
 
@@ -105,7 +105,7 @@ user
 
 The password is printed in the application console every time the application starts.
 
-![alt text](img02-console.png)
+![alt text](imgconsole.png)
 
 ---
 
