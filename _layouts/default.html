@@ -4,10 +4,7 @@
   <body data-base-url="{{ '/' | relative_url }}" data-sw-url="{{ '/sw.js' | relative_url }}">
     <a class="sr-only" href="#main-content">Skip to content</a>
     <div class="app-splash" id="appSplash" aria-hidden="true">
-      <picture>
-        <source srcset="{{ '/assets/images/optimized/profile-720.webp' | relative_url }} 720w" type="image/webp">
-        <img src="{{ '/assets/images/profile.png' | relative_url }}" alt="{{ site.title | escape }}" class="splash-avatar" loading="lazy" />
-      </picture>
+      <img src="{{ '/assets/images/logo.svg' | relative_url }}" alt="" class="splash-logo" width="54" height="54" />
       <p class="splash-title">{{ site.title | escape }}</p>
     </div>
 

@@ -85,7 +85,10 @@ a:focus {
 }
 
 .wrapper {
-  max-width: 980px;
+  max-width: 1080px;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  box-sizing: border-box;
 }
 
 .page-content {
@@ -158,28 +161,41 @@ a:focus {
   align-items: center;
   justify-content: space-between;
   gap: 0.9rem;
-  min-height: 62px;
+  min-height: 68px;
 }
 
 .site-brand {
   display: flex;
   align-items: center;
-  gap: 0.55rem;
 }
 
-.site-avatar {
-  width: 34px;
-  height: 34px;
+.site-brand-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.62rem;
+  color: var(--text) !important;
+  text-decoration: none;
+}
+
+.site-logo {
+  width: 30px;
+  height: 30px;
+  flex: 0 0 auto;
   border-radius: 50%;
-  border: 1px solid var(--border);
-  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(29, 37, 33, 0.12);
 }
 
 .site-title {
-  font-size: 0.98rem;
-  font-weight: 700;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
   text-decoration: none;
   color: var(--text) !important;
+}
+
+.site-title-mark {
+  color: var(--accent-soft);
 }
 
 .site-nav {
@@ -189,15 +205,15 @@ a:focus {
 .site-nav .trigger {
   display: flex;
   align-items: center;
-  gap: 0.15rem;
+  gap: 0.25rem;
 }
 
 .site-nav .page-link {
-  font-size: 0.84rem;
+  font-size: 0.78rem;
   font-weight: 600;
   color: var(--text-soft) !important;
   border-radius: 999px;
-  padding: 0.35rem 0.68rem;
+  padding: 0.42rem 0.72rem;
   text-decoration: none;
 }
 
@@ -301,11 +317,11 @@ a:focus {
   grid-template-columns: 1fr auto;
   align-items: center;
   gap: 1rem;
-  padding: clamp(1.35rem, 4vw, 2.4rem);
+  padding: clamp(1.35rem, 4vw, 2.5rem);
   border-radius: 20px;
   border: 1px solid var(--border);
   background: linear-gradient(120deg, color-mix(in srgb, var(--surface-solid) 92%, transparent), color-mix(in srgb, var(--bg-soft) 44%, transparent));
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 12px 35px rgba(29, 37, 33, 0.08);
   margin-bottom: 1rem;
 }
 
@@ -330,7 +346,9 @@ a:focus {
 
 .hero-title {
   margin: 0.2rem 0 0.5rem;
-  font-size: clamp(1.45rem, 6vw, 2.2rem);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  letter-spacing: -0.04em;
 }
 
 .hero-description {
@@ -340,8 +358,8 @@ a:focus {
 }
 
 .hero-avatar {
-  width: clamp(70px, 13vw, 112px);
-  height: clamp(70px, 13vw, 112px);
+  width: clamp(58px, 10vw, 82px);
+  height: clamp(58px, 10vw, 82px);
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid var(--border);
@@ -882,6 +900,8 @@ textarea:focus {
 }
 
 .post {
+  max-width: 780px;
+  margin: 0 auto;
   border-radius: 18px;
   border: 1px solid var(--border);
   background: var(--surface);
@@ -890,6 +910,9 @@ textarea:focus {
 }
 
 .post-title {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.8rem, 4vw, 2.7rem);
+  letter-spacing: -0.035em;
   margin-bottom: 0.25rem;
 }
 
@@ -1209,11 +1232,9 @@ textarea:focus {
   pointer-events: none;
 }
 
-.splash-avatar {
-  width: 88px;
-  height: 88px;
-  border-radius: 50%;
-  border: 2px solid var(--border);
+.splash-logo {
+  width: 54px;
+  height: 54px;
   animation: splash-pulse 1.2s ease infinite;
 }
 
@@ -1311,8 +1332,15 @@ textarea:focus {
     cursor: pointer;
   }
 
-  .site-nav .menu-icon path {
-    fill: var(--text);
+  .site-nav label {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .menu-icon-line {
+    width: 15px;
+    height: 1px;
+    background: var(--text);
   }
 
   .site-nav .nav-trigger:checked + label + .trigger {
@@ -1352,8 +1380,8 @@ textarea:focus {
   }
 
   .hero-avatar {
-    width: 64px;
-    height: 64px;
+    width: 56px;
+    height: 56px;
   }
 
   .hero-actions,
