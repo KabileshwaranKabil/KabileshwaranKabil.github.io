@@ -60,11 +60,15 @@
     if (!button) {
       return;
     }
-    const modeIcon = button.querySelector(".mode-icon");
+    const modeIcon = button.querySelector(".theme-toggle-icon");
+    const modeLabel = button.querySelector(".theme-toggle-label");
     const currentTheme = document.documentElement.getAttribute("data-theme") || "light";
     button.setAttribute("aria-pressed", currentTheme === "dark" ? "true" : "false");
     if (modeIcon) {
-      modeIcon.textContent = currentTheme === "dark" ? "L" : "D";
+      modeIcon.textContent = currentTheme === "dark" ? "☀" : "☾";
+    }
+    if (modeLabel) {
+      modeLabel.textContent = currentTheme === "dark" ? "Light mode" : "Dark mode";
     }
   }
 
@@ -73,6 +77,9 @@
     if (!button) {
       return;
     }
+    const savedTheme = localStorage.getItem(STORAGE_KEYS.theme);
+    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    setTheme(savedTheme === "dark" || savedTheme === "light" ? savedTheme : systemTheme);
     updateThemeButton();
     button.addEventListener("click", () => {
       const currentTheme = document.documentElement.getAttribute("data-theme") || "light";
@@ -120,20 +127,6 @@
     );
 
     items.forEach((item) => observer.observe(item));
-  }
-
-  function initSplash() {
-    const splash = document.getElementById("appSplash");
-    if (!splash) {
-      return;
-    }
-
-    window.setTimeout(() => {
-      splash.classList.add("is-hidden");
-      window.setTimeout(() => {
-        splash.remove();
-      }, 500);
-    }, 550);
   }
 
   function updateStreak() {
@@ -254,24 +247,6 @@
     updateProgress();
     window.addEventListener("scroll", updateProgress, { passive: true });
     window.addEventListener("resize", updateProgress);
-  }
-
-  function initFab() {
-    const fab = document.getElementById("fabAction");
-    if (!fab) {
-      return;
-    }
-
-    const showFab = () => {
-      fab.classList.toggle("is-visible", window.scrollY > 140);
-    };
-
-    showFab();
-    window.addEventListener("scroll", showFab, { passive: true });
-
-    fab.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
   }
 
   function initPWAInstall() {
@@ -428,10 +403,8 @@
     initThemeToggle();
     initActiveNavigation();
     initRevealAnimations();
-    initSplash();
     initPWAInstall();
     initCodeBlocks();
     initPostSearch();
-    initFab();
   });
 })();

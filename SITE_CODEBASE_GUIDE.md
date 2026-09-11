@@ -263,12 +263,8 @@ It provides:
 
 - The HTML document structure
 - The skip-to-content link
-- The splash screen
 - The custom header include
-- The PWA install banner
 - The main content wrapper
-- The floating back-to-top button
-- The mobile bottom navigation
 - The custom footer include
 
 The central Liquid expression is:
@@ -675,10 +671,11 @@ This keeps variables out of the global namespace.
 The theme feature:
 
 1. Finds `#darkModeToggle`.
-2. Reads the current `data-theme` value.
+1. Restores a saved theme from `localStorage` when available.
+2. Falls back to the operating system's `prefers-color-scheme` setting.
 3. Switches between `light` and `dark`.
 4. Stores the choice in `localStorage` under `theme`.
-5. Updates button state and accessible `aria-pressed`.
+5. Updates the icon, label, and accessible `aria-pressed` state.
 
 If the theme button is moved or renamed, update both the HTML and `initThemeToggle()`.
 
@@ -710,12 +707,6 @@ CSS controls the visual transition:
 
 The reduced-motion media query disables the movement for users who request less motion.
 
-### Splash screen
-
-`initSplash()` hides and removes `#appSplash` after a short delay.
-
-If the splash becomes annoying or slows the perceived load, reduce the delay or remove the splash from `default.html` and the related CSS.
-
 ### Post search and category filters
 
 `initPostSearch()` only activates when it finds:
@@ -735,22 +726,9 @@ When editing the posts page, preserve these IDs unless you also update the JavaS
 
 This is used on article pages.
 
-### Floating action button
+### Offline support
 
-`initFab()` shows `#fabAction` after the user scrolls down. Clicking it scrolls to the top.
-
-### PWA installation
-
-`initPWAInstall()` handles:
-
-- `beforeinstallprompt`
-- Mobile install banner
-- Install button
-- iOS and browser fallback instructions
-- Dismissal stored in local storage
-- Service-worker registration
-
-Do not assume the native install prompt exists on every browser.
+The shared JavaScript registers the service worker for offline caching. Install prompts and app-style banners were intentionally removed to keep the site focused as a professional blog.
 
 ### Code-copy buttons
 
@@ -769,11 +747,9 @@ document.addEventListener("DOMContentLoaded", () => {
   initThemeToggle();
   initActiveNavigation();
   initRevealAnimations();
-  initSplash();
   initPWAInstall();
   initCodeBlocks();
   initPostSearch();
-  initFab();
 });
 ```
 
@@ -785,7 +761,7 @@ A feature function should safely return when its target element does not exist. 
 
 ### Main branding assets
 
-- `assets/images/logo.svg`: Compact K logo used in the header and splash.
+- `assets/images/logo.svg`: Compact K logo used in the header.
 - `assets/images/app-icon.svg`: PWA icon.
 - `assets/images/profile.png`: Profile image used by the homepage hero.
 - `assets/images/optimized/`: Optimized image variants.

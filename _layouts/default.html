@@ -3,49 +3,14 @@
   {%- include head.html -%}
   <body data-base-url="{{ '/' | relative_url }}" data-sw-url="{{ '/sw.js' | relative_url }}">
     <a class="sr-only" href="#main-content">Skip to content</a>
-    <div class="app-splash" id="appSplash" aria-hidden="true">
-      <img src="{{ '/assets/images/logo.svg' | relative_url }}" alt="" class="splash-logo" width="54" height="54" />
-      <p class="splash-title">{{ site.title | escape }}</p>
-    </div>
 
     {%- include header.html -%}
-
-    <button id="installAppBtn" class="install-app-btn" type="button" hidden>Install App</button>
-
-    <section class="install-banner reveal" id="installBanner" hidden aria-label="Install app prompt">
-      <div>
-        <p class="install-banner-eyebrow">Mobile app mode</p>
-        <p class="install-banner-title">Install the study site on your phone</p>
-        <p class="install-banner-copy">Open it from the home screen for quicker daily access and offline reading.</p>
-      </div>
-      <div class="install-banner-actions">
-        <button class="ghost-btn install-banner-button" id="installBannerButton" type="button">Install</button>
-        <button class="ghost-btn install-banner-dismiss" id="dismissInstallBanner" type="button">Not now</button>
-      </div>
-    </section>
 
     <main id="main-content" class="page-content" role="main" aria-label="Content">
       <div class="wrapper app-content-wrap">
         {{ content }}
       </div>
     </main>
-
-    <button class="fab" id="fabAction" type="button" aria-label="Quick action">+</button>
-
-    <nav class="bottom-nav" aria-label="Primary">
-      <a href="{{ '/' | relative_url }}" class="bottom-nav-link" data-route="/">
-        <span>Home</span>
-      </a>
-      <a href="{{ '/posts' | relative_url }}" class="bottom-nav-link" data-route="/posts">
-        <span>Blog</span>
-      </a>
-      <a href="{{ '/topics' | relative_url }}" class="bottom-nav-link" data-route="/topics">
-        <span>Topics</span>
-      </a>
-      <a href="{{ '/about' | relative_url }}" class="bottom-nav-link" data-route="/about">
-        <span>About</span>
-      </a>
-    </nav>
 
     {%- include footer.html -%}
   </body>

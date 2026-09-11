@@ -3,38 +3,38 @@
 ---
 
 :root {
-  --bg: #f4f0e8;
-  --bg-soft: #e8e0d4;
-  --surface: rgba(255, 252, 246, 0.78);
+  --bg: #f7f8f6;
+  --bg-soft: #e8ece7;
+  --surface: #ffffff;
   --surface-solid: #ffffff;
   --code-bg: #eef1f6;
   --code-text: #1d2430;
   --code-border: rgba(20, 23, 28, 0.12);
-  --text: #1d2521;
-  --text-soft: #5c655f;
-  --border: rgba(29, 37, 33, 0.12);
-  --accent: #1f5145;
-  --accent-soft: #bd5e3b;
+  --text: #17211d;
+  --text-soft: #66716b;
+  --border: #dce3dd;
+  --accent: #1d5a48;
+  --accent-soft: #a64f35;
   --success: #2f855a;
   --danger: #c53030;
-  --shadow-sm: 0 8px 24px rgba(20, 23, 28, 0.08);
-  --shadow-md: 0 20px 55px rgba(20, 23, 28, 0.12);
-  --radius: 16px;
-  --radius-sm: 12px;
+  --shadow-sm: 0 8px 22px rgba(23, 33, 29, 0.06);
+  --shadow-md: 0 18px 45px rgba(23, 33, 29, 0.1);
+  --radius: 10px;
+  --radius-sm: 7px;
   --nav-height: 66px;
 }
 
 html[data-theme="dark"] {
-  --bg: #111714;
-  --bg-soft: #1c2923;
-  --surface: rgba(27, 39, 33, 0.92);
+  --bg: #101513;
+  --bg-soft: #1b2520;
+  --surface: #18221d;
   --surface-solid: #1d2923;
   --code-bg: #101a16;
   --code-text: #e8f0ea;
   --code-border: rgba(188, 211, 196, 0.18);
   --text: #eff5ef;
   --text-soft: #b8c8bc;
-  --border: rgba(188, 211, 196, 0.16);
+  --border: #314139;
   --accent: #8cc8a5;
   --accent-soft: #e0a17f;
   --success: #60d394;
@@ -58,7 +58,7 @@ html[data-theme="dark"] {
 body {
   margin: 0;
   font-family: "Manrope", "Segoe UI", sans-serif;
-  background: radial-gradient(circle at 9% 0%, color-mix(in srgb, var(--bg-soft) 70%, transparent) 0%, transparent 36%), linear-gradient(135deg, var(--bg) 0%, #f8f4ed 58%, #e9eee9 100%);
+  background: var(--bg);
   color: var(--text);
   min-height: 100vh;
   transition: background-color 0.25s ease, color 0.25s ease;
@@ -196,8 +196,8 @@ a:focus {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: color-mix(in srgb, var(--surface-solid) 82%, transparent);
-  backdrop-filter: blur(10px);
+  background: color-mix(in srgb, var(--surface-solid) 92%, transparent);
+  backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border);
 }
 
@@ -266,6 +266,36 @@ a:focus {
 .site-nav .page-link:hover {
   color: var(--text) !important;
   background: var(--surface);
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 32px;
+  margin-left: 0.4rem;
+  padding: 0 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-soft);
+  font: inherit;
+  font-size: 0.74rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.theme-toggle:hover,
+.theme-toggle[aria-pressed="true"] {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  color: var(--text);
+}
+
+.theme-toggle-icon {
+  color: var(--accent-soft);
+  font-size: 1rem;
+  line-height: 1;
 }
 
 .site-nav .page-link.active {
@@ -474,16 +504,28 @@ a:focus {
 }
 
 .topic-card {
+  position: relative;
   display: flex;
-  min-height: 180px;
+  min-height: 160px;
   flex-direction: column;
   padding: 1.15rem;
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: 4px 10px 10px 10px;
   background: var(--surface);
   color: var(--text) !important;
   text-decoration: none;
   transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.topic-card::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 12px;
+  width: 52px;
+  height: 5px;
+  border-radius: 0 0 4px 4px;
+  background: var(--accent);
 }
 
 .topic-card:hover,
@@ -494,13 +536,15 @@ a:focus {
 }
 
 .topic-card-number {
-  color: var(--accent-soft);
-  font: 800 0.7rem/1 "SFMono-Regular", Consolas, monospace;
+  color: var(--accent);
+  font-size: 0.7rem;
+  font-weight: 800;
   letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .topic-card-name {
-  margin-top: 2.2rem;
+  margin-top: 1.5rem;
   font: 800 1.2rem/1.1 Georgia, "Times New Roman", serif;
   letter-spacing: -0.025em;
 }
@@ -1779,6 +1823,13 @@ textarea:focus {
   .site-nav .page-link.active {
     box-shadow: none;
     background: color-mix(in srgb, var(--accent) 12%, transparent);
+  }
+
+  .theme-toggle {
+    justify-content: flex-start;
+    width: 100%;
+    margin: 0.25rem 0 0;
+    border-radius: 6px;
   }
 
   .site-nav .page-link {
