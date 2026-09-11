@@ -16,9 +16,7 @@ layout: default
         {{ page.date | date: "%B %-d, %Y" }}
       </time>
       • {{ reading_time }} min read
-      {% if page.categories %}
-        • {% for category in page.categories %}{{ category }}{% unless forloop.last %}, {% endunless %}{% endfor %}
-      {% endif %}
+      {% if page.categories %} · <span class="post-meta-topics">{% for category in page.categories %}{% assign category_slug = category | slugify %}<a href="{{ '/topics/' | append: category_slug | append: '/' | relative_url }}">{{ category }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}</span>{% endif %}
     </p>
   </header>
 
@@ -30,9 +28,36 @@ layout: default
     <div class="post-tags">
       <strong>Tags:</strong>
       {% for tag in page.tags %}
-        <span class="tag">{{ tag }}</span>{% unless forloop.last %}, {% endunless %}
+        <span class="tag">{{ tag }}</span>
       {% endfor %}
     </div>
+  {% endif %}
+
+  {% assign primary_category = page.categories | first %}
+  {% assign related_posts = site.posts | where_exp: "post", "post.categories contains primary_category" %}
+  {% assign related_count = 0 %}
+  {% for related_post in related_posts %}
+    {% if related_post.url != page.url and related_count < 3 %}
+      {% if related_count == 0 %}
+        <section class="related-posts" aria-labelledby="related-posts-heading">
+          <div class="section-head">
+            <h2 id="related-posts-heading">Keep exploring {{ primary_category }}</h2>
+            {% assign primary_slug = primary_category | slugify %}
+            <a href="{{ '/topics/' | append: primary_slug | append: '/' | relative_url }}">View topic</a>
+          </div>
+          <div class="related-post-grid">
+      {% endif %}
+            <a class="related-post-card" href="{{ related_post.url | relative_url }}">
+              <span class="related-post-date">{{ related_post.date | date: "%b %d, %Y" }}</span>
+              <strong>{{ related_post.title | escape }}</strong>
+              <span aria-hidden="true">Read article &#8594;</span>
+            </a>
+      {% assign related_count = related_count | plus: 1 %}
+    {% endif %}
+  {% endfor %}
+  {% if related_count > 0 %}
+          </div>
+        </section>
   {% endif %}
 
   <div class="post-share">

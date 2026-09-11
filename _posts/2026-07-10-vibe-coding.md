@@ -2,7 +2,7 @@
 layout: post
 title: "Why AI Vibe Coding is a Nightmare: 5 Surprising Lessons from Engineering History"
 date: 2026-07-10 00:00:00 +0530
-categories: [Notes]
+categories: [AI, Notes]
 tags: [blog,vibe-coding, AI, software-engineering, lessons]
 ---
 

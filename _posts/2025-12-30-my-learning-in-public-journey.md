@@ -2,7 +2,7 @@
 layout: post
 title: "Why I Started Learning in Public"
 date: 2025-12-30 00:00:00 +0530
-categories: [Notes]
+categories: [CS Fundamentals, Notes]
 tags: [learning, cs, projects]
 ---
 

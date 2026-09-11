@@ -2,7 +2,7 @@
 layout: post
 title: "How I Built My Blog with GitHub Pages: A Beginner's Guide"
 date: 2026-01-16 00:00:00 +0530
-categories: [Notes]
+categories: [Full Stack, Notes]
 tags: [blog, github-pages, jekyll, tutorial, learning]
 ---
 

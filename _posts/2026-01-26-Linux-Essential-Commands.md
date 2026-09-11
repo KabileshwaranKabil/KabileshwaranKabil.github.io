@@ -2,7 +2,7 @@
 layout: post
 title: "Essential Linux Commands"
 date: 2026-01-26 00:00:00 +0530
-categories: [Notes]
+categories: [DevOps, Notes]
 tags: [commands, linux, learning]
 ---
 Linux is an essential skill for developers and computer science students. As a Windows user, it was a bit hard for me to start with Linux, especially when I wanted to copy, paste, cut, and perform other easy functions from Windows. But I was always curious to work on Linux. Here are some useful commands that really helped me and amazed me during my Linux learning journey. This guide covers the top essential commands, keyboard shortcuts, software installation, and must-know commands for students.

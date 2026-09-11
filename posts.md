@@ -6,19 +6,16 @@ permalink: /posts/
 
 <div class="posts-page">
   <h1>Blog and Notes</h1>
-  <p class="posts-intro">Search your notes quickly and filter by category for focused revision.</p>
+  <p class="posts-intro">Search the learning archive by idea, technology, or topic.</p>
 
   <div class="posts-tools">
     <label for="postSearch" class="sr-only">Search posts</label>
     <input id="postSearch" class="search-input" type="search" placeholder="Search titles, topics, or excerpts" autocomplete="off">
     <div class="filter-row" id="categoryFilters">
       <button type="button" class="filter-chip is-active" data-filter="all">All</button>
-      {%- assign all_categories = site.posts | map: "categories" | join: "," | split: "," | uniq | sort -%}
+      {%- assign all_categories = site.data.categories -%}
       {%- for category in all_categories -%}
-        {%- assign clean_category = category | strip -%}
-        {%- if clean_category != "" -%}
-          <button type="button" class="filter-chip" data-filter="{{ clean_category | downcase }}">{{ clean_category }}</button>
-        {%- endif -%}
+        <button type="button" class="filter-chip" data-filter="{{ category.slug }}">{{ category.name }}</button>
       {%- endfor -%}
     </div>
   </div>
@@ -28,19 +25,20 @@ permalink: /posts/
       {%- for post in site.posts -%}
         {% assign words = post.content | number_of_words %}
         {% assign reading_time = words | plus: 219 | divided_by: 220 %}
-        {% assign searchable_categories = post.categories | join: ' ' | downcase %}
+        {% capture searchable_categories %}{% for category in post.categories %}{{ category | slugify }} {% endfor %}{% endcapture %}
         <article class="post-item">
           <div
             class="post-item-search"
             data-title="{{ post.title | downcase | escape }}"
             data-excerpt="{{ post.excerpt | strip_html | downcase | escape }}"
-            data-categories="{{ searchable_categories | escape }}"
+            data-categories="{{ searchable_categories | strip | escape }}"
           ></div>
           <div class="post-item-header">
             <span class="post-date">{{ post.date | date: "%B %d, %Y" }} • {{ reading_time }} min read</span>
             <div class="post-categories">
               {%- for category in post.categories -%}
-                <span class="category-badge">{{ category }}</span>
+                {%- assign category_slug = category | slugify -%}
+                <a class="category-badge" href="{{ '/topics/' | append: category_slug | append: '/' | relative_url }}">{{ category }}</a>
               {%- endfor -%}
             </div>
           </div>

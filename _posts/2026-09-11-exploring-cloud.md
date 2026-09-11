@@ -2,7 +2,7 @@
 layout: post
 title: "Exploring the World of Cloud"
 date: 2026-09-11 00:00:00 +0530
-categories: [cloud]
+categories: [Cloud, Notes]
 tags: [learning, cs, aws, cloud]
 ---
 

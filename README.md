@@ -4,8 +4,8 @@ Documenting what I learn daily while building strong Computer Science fundamenta
 
 ## Quick Navigation
 
-- **[📚 DSA](/dsa/)** - Data Structures & Algorithms learning and problem-solving
-- **[📝 Notes](/notes/)** - Daily learnings and technical notes
+- **[📚 Topics](/topics/dsa/)** - Browse learning by DSA, CS, Full Stack, AI, Security, Cloud, and DevOps
+- **[📝 Notes](/topics/notes/)** - Daily learnings and technical notes
 - **[💭 Reflections](/reflections/)** - Thoughts on learning, progress, and mindset
 - **[ℹ️ About](/about/)** - More about me and my learning philosophy
 

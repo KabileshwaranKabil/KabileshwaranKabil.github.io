@@ -177,7 +177,8 @@
       return;
     }
 
-    let activeFilter = "all";
+    const initialCategory = new URLSearchParams(window.location.search).get("category");
+    let activeFilter = initialCategory || "all";
     const chips = document.querySelectorAll(".filter-chip");
 
     const applyFilter = () => {
@@ -196,7 +197,7 @@
         const categories = source.dataset.categories || "";
 
         const matchesQuery = !query || title.includes(query) || excerpt.includes(query) || categories.includes(query);
-        const matchesFilter = activeFilter === "all" || categories.includes(activeFilter);
+        const matchesFilter = activeFilter === "all" || categories.split(/\s+/).includes(activeFilter);
 
         const visible = matchesQuery && matchesFilter;
         item.hidden = !visible;
@@ -216,8 +217,19 @@
         chips.forEach((entry) => entry.classList.remove("is-active"));
         chip.classList.add("is-active");
         activeFilter = chip.dataset.filter || "all";
+        const url = new URL(window.location.href);
+        if (activeFilter === "all") {
+          url.searchParams.delete("category");
+        } else {
+          url.searchParams.set("category", activeFilter);
+        }
+        window.history.replaceState({}, "", url);
         applyFilter();
       });
+    });
+
+    chips.forEach((chip) => {
+      chip.classList.toggle("is-active", (chip.dataset.filter || "all") === activeFilter);
     });
 
     applyFilter();

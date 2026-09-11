@@ -2,7 +2,7 @@
 layout: post
 title: "Linked Lists — Concepts and Implementation"
 date: 2026-01-06 00:00:00 +0530
-categories: [Data Structures]
+categories: [DSA]
 tags: [linked-list, data-structures, cs]
 ---
 

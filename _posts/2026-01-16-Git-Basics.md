@@ -2,7 +2,7 @@
 layout: post
 title: "Git Basics Cheat Sheet"
 date: 2026-01-16 00:00:00 +0530
-categories: [Notes]
+categories: [DevOps, Notes]
 tags: [learning, cs, git, version-control, development]
 ---
 

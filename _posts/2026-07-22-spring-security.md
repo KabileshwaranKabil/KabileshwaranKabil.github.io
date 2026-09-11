@@ -2,7 +2,7 @@
 layout: post
 title: "Spring Security for Beginners — Authentication, Authorization & Basic Setup"
 date: 2026-07-22 00:00:00 +0530
-categories: [Notes]
+categories: [Security, Notes]
 tags: [blog, spring, security,java]
 ---
 I'm currently learning **Spring Security**, and these are my beginner-friendly notes after understanding the fundamentals. I wanted to organize everything into one place so it can help other students who are just getting started.

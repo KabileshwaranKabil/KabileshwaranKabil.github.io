@@ -1,0 +1,53 @@
+---
+layout: default
+---
+
+{% assign topic = site.data.categories | where: "slug", page.topic | first %}
+{% assign topic_posts = site.posts | where_exp: "post", "post.categories contains topic.name" %}
+
+<section class="topic-hero reveal">
+  <div>
+    <p class="eyebrow"><span class="eyebrow-dot"></span> {{ topic.eyebrow }}</p>
+    <h1 class="page-title">{{ topic.name }}</h1>
+    <p class="page-lead">{{ topic.description }}</p>
+  </div>
+  <div class="topic-count" aria-label="{{ topic_posts.size }} articles">
+    <strong>{{ topic_posts.size }}</strong>
+    <span>articles</span>
+  </div>
+</section>
+
+<div class="topic-toolbar reveal">
+  <a class="secondary-btn" href="{{ '/posts' | relative_url }}">All articles <span aria-hidden="true">&#8594;</span></a>
+  <span class="topic-toolbar-note">{{ topic_posts.size }} learning notes in this topic</span>
+</div>
+
+{% if topic_posts.size > 0 %}
+  <section class="topic-posts" aria-label="{{ topic.name }} articles">
+    {% for post in topic_posts %}
+      {% assign words = post.content | number_of_words %}
+      {% assign reading_time = words | plus: 219 | divided_by: 220 %}
+      <article class="topic-post-card reveal">
+        <div class="topic-post-index">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</div>
+        <div class="topic-post-body">
+          <div class="post-item-header">
+            <span class="post-date">{{ post.date | date: "%b %d, %Y" }} · {{ reading_time }} min read</span>
+            <div class="post-categories">
+              {% for tag in post.tags limit: 3 %}<span class="category-badge">{{ tag }}</span>{% endfor %}
+            </div>
+          </div>
+          <h2 class="post-item-title"><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h2>
+          <p class="post-item-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+          <a class="read-more" href="{{ post.url | relative_url }}">Read article <span aria-hidden="true">&#8594;</span></a>
+        </div>
+      </article>
+    {% endfor %}
+  </section>
+{% else %}
+  <section class="empty-state panel-card">
+    <p class="eyebrow">Coming soon</p>
+    <h2>Nothing published here yet.</h2>
+    <p>This topic is part of the learning map and will grow as new notes are written.</p>
+    <a class="primary-btn" href="{{ '/posts' | relative_url }}">Browse all articles</a>
+  </section>
+{% endif %}

@@ -1,0 +1,45 @@
+- name: DSA
+  slug: dsa
+  eyebrow: Problem solving
+  description: Data structures, algorithms, patterns, and deliberate practice.
+  symbol: "01"
+- name: CS Fundamentals
+  slug: cs-fundamentals
+  eyebrow: Core concepts
+  description: The ideas behind computers, code, systems, and the web.
+  symbol: "02"
+- name: Full Stack
+  slug: full-stack
+  eyebrow: Building things
+  description: Practical notes from designing, coding, and shipping software.
+  symbol: "03"
+- name: AI
+  slug: ai
+  eyebrow: Intelligent systems
+  description: Machine learning foundations, AI tools, and thoughtful experiments.
+  symbol: "04"
+- name: Security
+  slug: security
+  eyebrow: Secure by design
+  description: Authentication, authorization, application security, and safer systems.
+  symbol: "05"
+- name: Cloud
+  slug: cloud
+  eyebrow: Modern infrastructure
+  description: Cloud concepts, AWS foundations, scalability, and operations.
+  symbol: "06"
+- name: DevOps
+  slug: devops
+  eyebrow: Ship and operate
+  description: Linux, shell tools, automation, version control, and delivery habits.
+  symbol: "07"
+- name: Notes
+  slug: notes
+  eyebrow: Quick references
+  description: Short technical notes, cheat sheets, and useful explanations.
+  symbol: "08"
+- name: Reflections
+  slug: reflections
+  eyebrow: Learning in public
+  description: Honest notes about progress, habits, goals, and the work behind learning.
+  symbol: "09"

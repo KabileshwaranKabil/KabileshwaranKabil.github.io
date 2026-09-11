@@ -2,7 +2,7 @@
 layout: post
 title: "Introduction to Bash "
 date: 2026-01-27 00:00:00 +0530
-categories: [Notes]
+categories: [DevOps, Notes]
 tags: [script, shell, bash, tutorial, learning]
 ---
 As a beginner to Bash and Linux, I really felt it was difficult to learn at first. But after getting familiar with the syntax, I really liked it more than some of the boring programming languages out there. Bash scripting is powerful, practical, and opens up a world of automation on Unix-like systems. In this post, I'll walk you through the basics, history, and essentials to get you started.

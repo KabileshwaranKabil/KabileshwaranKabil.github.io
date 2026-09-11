@@ -2,77 +2,72 @@
 layout: default
 ---
 
-<section class="dashboard-hero reveal">
-  <div>
-    <p class="eyebrow"><span class="eyebrow-dot"></span> Learning in public</p>
-    <h1 class="hero-title">{{ site.title }}</h1>
-    <p class="hero-description">{{ site.description }}</p>
+<section class="learning-hero reveal">
+  <div class="learning-hero-copy">
+    <p class="eyebrow"><span class="eyebrow-dot"></span> A student knowledge base</p>
+    <h1 class="hero-title">Learn deeply.<br><em>Write clearly.</em></h1>
+    <p class="hero-description">A living record of my Computer Science journey: daily practice, practical builds, and the ideas I am still learning how to explain.</p>
     <div class="hero-actions">
-      <a href="{{ '/notes' | relative_url }}" class="primary-btn">Explore notes <span aria-hidden="true">&#8594;</span></a>
-      <a href="{{ '/about' | relative_url }}" class="secondary-btn">About this journey</a>
+      <a href="{{ '/posts' | relative_url }}" class="primary-btn">Read the latest <span aria-hidden="true">&#8594;</span></a>
+      <a href="{{ '/about' | relative_url }}" class="secondary-btn">About the author</a>
     </div>
   </div>
-  <img src="{{ '/assets/images/profile.png' | relative_url }}" alt="Kabileshwaran" class="hero-avatar" loading="lazy">
-</section>
-
-<section class="stats-grid reveal" aria-label="Site statistics">
-  <div class="stat-card"><span class="stat-kicker">Published notes</span><strong>{{ site.posts.size }}</strong><span>ideas captured</span></div>
-  <div class="stat-card"><span class="stat-kicker">Current rhythm</span><strong>Daily</strong><span>one step at a time</span></div>
-  <div class="stat-card"><span class="stat-kicker">Main track</span><strong>CS</strong><span>fundamentals first</span></div>
-</section>
-
-<section class="dashboard-grid reveal">
-  <article class="panel-card">
-    <div class="panel-heading"><span class="panel-number">01</span><h2>Study Focus</h2></div>
-    <p class="panel-sub">A concise view of the learning paths that define this site.</p>
-    <div class="metric-grid">
-      <div class="metric-item">
-        <span class="metric-label">DSA Notes</span>
-        <strong class="metric-value">Library</strong>
-      </div>
-      <div class="metric-item">
-        <span class="metric-label">Writing</span>
-        <strong class="metric-value">Daily</strong>
-      </div>
-    </div>
-    <a href="{{ '/notes' | relative_url }}" class="ghost-btn">Open notes</a>
-  </article>
-
-  <article class="panel-card">
-    <div class="panel-heading"><span class="panel-number">02</span><h2>Quick Access</h2></div>
-    <p class="panel-sub">Jump straight into the part of the archive you need.</p>
-    <div class="quick-grid">
-      <a href="{{ '/posts' | relative_url }}" class="quick-card"><span class="quick-icon">&#8599;</span><span>All posts</span><small>Browse the archive</small></a>
-      <a href="{{ '/reflections' | relative_url }}" class="quick-card"><span class="quick-icon">&#10024;</span><span>Reflections</span><small>Lessons from the process</small></a>
-      <a href="{{ '/dsa' | relative_url }}" class="quick-card"><span class="quick-icon">&#9670;</span><span>DSA practice</span><small>Patterns and problems</small></a>
-      <a href="{{ '/about' | relative_url }}" class="quick-card"><span class="quick-icon">&#8594;</span><span>About me</span><small>Context behind the work</small></a>
-    </div>
-  </article>
-</section>
-
-<section class="panel-card reveal">
-  <div class="section-head">
-    <h2>Recently Added Notes</h2>
-    <a href="{{ '/posts' | relative_url }}">View all</a>
+  <div class="learning-hero-note" aria-label="Site summary">
+    <span class="note-mark">K.</span>
+    <span class="note-line"></span>
+    <span class="note-caption">Learning in public<br>since 2025</span>
   </div>
-  <div class="compact-post-list">
-    {%- for post in site.posts limit: 6 -%}
-      {% assign words = post.content | number_of_words %}
-      {% assign read_time = words | plus: 219 | divided_by: 220 %}
-      <article class="compact-post-item">
-        <a href="{{ post.url | relative_url }}" class="compact-post-title">{{ post.title | escape }}</a>
-        <div class="compact-post-meta">
-          <span>{{ post.date | date: "%b %d, %Y" }}</span>
-          <span>{{ read_time }} min</span>
-          <span>
-            {%- for category in post.categories limit: 1 -%}
-              {{ category }}
-            {%- else -%}
-              General
-            {%- endfor -%}
-          </span>
-        </div>
-      </article>
-    {%- endfor -%}
+</section>
+
+<section class="topic-section reveal" aria-labelledby="topics-heading">
+  <div class="section-intro">
+    <div>
+      <p class="eyebrow">The learning map</p>
+      <h2 id="topics-heading">Explore by topic</h2>
+    </div>
+    <a href="{{ '/posts' | relative_url }}" class="section-link">View all writing <span aria-hidden="true">&#8594;</span></a>
+  </div>
+  <div class="topic-grid">
+    {% for topic in site.data.categories %}
+      {% assign topic_posts = site.posts | where_exp: "post", "post.categories contains topic.name" %}
+      <a class="topic-card topic-card-{{ topic.slug }}" href="{{ '/topics/' | append: topic.slug | append: '/' | relative_url }}">
+        <span class="topic-card-number">{{ topic.symbol }}</span>
+        <span class="topic-card-name">{{ topic.name }}</span>
+        <span class="topic-card-description">{{ topic.description }}</span>
+        <span class="topic-card-footer"><span>{{ topic_posts.size }} articles</span><span aria-hidden="true">&#8594;</span></span>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="latest-section reveal" aria-labelledby="latest-heading">
+  <div class="section-intro">
+    <div>
+      <p class="eyebrow">Fresh from the notebook</p>
+      <h2 id="latest-heading">Latest learning</h2>
+    </div>
+    <span class="section-note">{{ site.posts.size }} articles and counting</span>
+  </div>
+  <div class="latest-layout">
+    <div class="latest-post-list">
+      {% for post in site.posts limit: 5 %}
+        {% assign words = post.content | number_of_words %}
+        {% assign read_time = words | plus: 219 | divided_by: 220 %}
+        <article class="latest-post">
+          <span class="latest-post-index">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+          <div>
+            <div class="compact-post-meta"><span>{{ post.date | date: "%b %d, %Y" }}</span><span>{{ read_time }} min read</span></div>
+            <h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
+            <div class="post-categories">{% for category in post.categories limit: 2 %}{% assign category_slug = category | slugify %}<a class="category-badge" href="{{ '/topics/' | append: category_slug | append: '/' | relative_url }}">{{ category }}</a>{% endfor %}</div>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+    <aside class="learning-aside">
+      <p class="eyebrow">The practice</p>
+      <h2>Small notes.<br>Compounding skill.</h2>
+      <p>This site is where I turn study sessions into explanations, patterns, and reference material I can return to later.</p>
+      <a href="{{ '/notes' | relative_url }}" class="text-link">Browse the notes <span aria-hidden="true">&#8594;</span></a>
+    </aside>
   </div>
 </section>

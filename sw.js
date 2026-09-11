@@ -1,4 +1,4 @@
-const CACHE_VERSION = "kabileshwaran-portfolio-v3";
+const CACHE_VERSION = "kabileshwaran-learning-v4";
 const CORE_CACHE = `core-${CACHE_VERSION}`;
 const RUNTIME_CACHE = `runtime-${CACHE_VERSION}`;
 const IMAGE_CACHE = `images-${CACHE_VERSION}`;
@@ -8,6 +8,16 @@ const CORE_ASSETS = [
   "./",
   "./about",
   "./dsa",
+  "./topics/dsa/",
+  "./topics/",
+  "./topics/cs-fundamentals/",
+  "./topics/full-stack/",
+  "./topics/ai/",
+  "./topics/security/",
+  "./topics/cloud/",
+  "./topics/devops/",
+  "./topics/notes/",
+  "./topics/reflections/",
   "./index.html",
   "./offline.html",
   "./manifest.json",
@@ -25,6 +35,16 @@ const NAVIGATION_FALLBACKS = new Set([
   "/",
   "/about",
   "/dsa",
+  "/topics/dsa",
+  "/topics",
+  "/topics/cs-fundamentals",
+  "/topics/full-stack",
+  "/topics/ai",
+  "/topics/security",
+  "/topics/cloud",
+  "/topics/devops",
+  "/topics/notes",
+  "/topics/reflections",
   "/notes",
   "/posts",
   "/privacy",
