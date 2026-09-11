@@ -2,8 +2,17 @@
 layout: default
 ---
 
-{% assign topic = site.data.categories | where: "slug", page.topic | first %}
-{% assign topic_posts = site.posts | where_exp: "post", "post.categories contains topic.name" %}
+{% for category in site.data.categories %}
+  {% if category.slug == page.topic %}
+    {% assign topic = category %}
+  {% endif %}
+{% endfor %}
+{% assign topic_count = 0 %}
+{% for post in site.posts %}
+  {% if post.categories contains topic.name %}
+    {% assign topic_count = topic_count | plus: 1 %}
+  {% endif %}
+{% endfor %}
 
 <section class="topic-hero reveal">
   <div>
@@ -11,20 +20,21 @@ layout: default
     <h1 class="page-title">{{ topic.name }}</h1>
     <p class="page-lead">{{ topic.description }}</p>
   </div>
-  <div class="topic-count" aria-label="{{ topic_posts.size }} articles">
-    <strong>{{ topic_posts.size }}</strong>
+  <div class="topic-count" aria-label="{{ topic_count }} articles">
+    <strong>{{ topic_count }}</strong>
     <span>articles</span>
   </div>
 </section>
 
 <div class="topic-toolbar reveal">
   <a class="secondary-btn" href="{{ '/posts' | relative_url }}">All articles <span aria-hidden="true">&#8594;</span></a>
-  <span class="topic-toolbar-note">{{ topic_posts.size }} learning notes in this topic</span>
+  <span class="topic-toolbar-note">{{ topic_count }} learning notes in this topic</span>
 </div>
 
-{% if topic_posts.size > 0 %}
+{% if topic_count > 0 %}
   <section class="topic-posts" aria-label="{{ topic.name }} articles">
-    {% for post in topic_posts %}
+    {% for post in site.posts %}
+      {% if post.categories contains topic.name %}
       {% assign words = post.content | number_of_words %}
       {% assign reading_time = words | plus: 219 | divided_by: 220 %}
       <article class="topic-post-card reveal">
@@ -41,6 +51,7 @@ layout: default
           <a class="read-more" href="{{ post.url | relative_url }}">Read article <span aria-hidden="true">&#8594;</span></a>
         </div>
       </article>
+      {% endif %}
     {% endfor %}
   </section>
 {% else %}
