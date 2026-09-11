@@ -91,7 +91,7 @@ http://localhost:8080
 
 redirects you to Spring Security's default login page.
 
-![alt text](img01-login.png)
+![alt text](imglogin.png)
 
 Spring Boot automatically creates a temporary user.
 
