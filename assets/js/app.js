@@ -95,6 +95,7 @@
       const isMatch = linkPath === "/" ? current === "/" : current === linkPath || current.startsWith(`${linkPath}/`);
       if (isMatch) {
         link.classList.add("active");
+        link.setAttribute("aria-current", "page");
       }
     });
   }
