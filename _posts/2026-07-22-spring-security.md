@@ -105,7 +105,7 @@ user
 
 The password is printed in the application console every time the application starts.
 
-![alt text](img02-console.png)
+![alt text](imgconsole.png)
 
 ---
 
