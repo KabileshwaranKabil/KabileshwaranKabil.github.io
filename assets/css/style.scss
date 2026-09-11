@@ -787,15 +787,15 @@ a:focus {
 
 .article-preview-body {
   display: grid;
-  grid-template-columns: 112px minmax(0, 1fr);
+  grid-template-columns: 72px minmax(0, 1fr);
   gap: 0.9rem;
   min-width: 0;
 }
 
 .article-preview-thumbnail {
   grid-row: span 3;
-  width: 112px;
-  height: 112px;
+  width: 72px;
+  height: 72px;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   background: var(--bg-soft);
@@ -1727,6 +1727,27 @@ textarea:focus {
   border-radius: 4px;
 }
 
+html[data-theme="dark"] .post-content pre,
+html[data-theme="dark"] .post-content .highlight,
+html[data-theme="dark"] .post-content .highlight pre,
+html[data-theme="dark"] .post-content .highlight code {
+  background: #0b1410 !important;
+  color: #f0f7f1 !important;
+}
+
+html[data-theme="dark"] .post-content .highlight .o,
+html[data-theme="dark"] .post-content .highlight .p,
+html[data-theme="dark"] .post-content .highlight .w {
+  color: #f0f7f1 !important;
+}
+
+html[data-theme="dark"] .post-content .highlight .c,
+html[data-theme="dark"] .post-content .highlight .cm,
+html[data-theme="dark"] .post-content .highlight .c1,
+html[data-theme="dark"] .post-content .highlight .cs {
+  color: #a8b8ad !important;
+}
+
 .post-content blockquote {
   margin: 1.1rem 0;
   padding: 0.9rem 1rem;
@@ -1833,6 +1854,11 @@ textarea:focus {
   box-shadow: var(--shadow-sm);
 }
 
+html[data-theme="dark"] .comments-section {
+  background: #18221d;
+  border-color: #3a4b41;
+}
+
 .comments-header h2 {
   margin: 0;
 }
@@ -1844,6 +1870,11 @@ textarea:focus {
 
 .comments-thread {
   min-height: 220px;
+}
+
+.comments-thread .utterances,
+.comments-thread .utterances-frame {
+  max-width: 100%;
 }
 
 .comments-disabled {
@@ -2707,7 +2738,7 @@ iframe {
   .article-preview-thumbnail {
     grid-row: auto;
     width: 100%;
-    height: 128px;
+    height: 96px;
   }
 
   .content-post-row {

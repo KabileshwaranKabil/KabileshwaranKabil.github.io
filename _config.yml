@@ -50,7 +50,7 @@ comments:
   utterances:
     repo: KabileshwaranKabil/KabileshwaranKabil.github.io
     issue_term: pathname
-    theme: preferred-color-scheme
+    theme: github-light
 
 plugins:
   - jekyll-feed
