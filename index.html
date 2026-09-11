@@ -4,16 +4,26 @@ layout: default
 
 <section class="dashboard-hero reveal">
   <div>
-    <p class="eyebrow">Learning in public</p>
+    <p class="eyebrow"><span class="eyebrow-dot"></span> Learning in public</p>
     <h1 class="hero-title">{{ site.title }}</h1>
     <p class="hero-description">{{ site.description }}</p>
+    <div class="hero-actions">
+      <a href="{{ '/notes' | relative_url }}" class="primary-btn">Explore notes <span aria-hidden="true">&#8594;</span></a>
+      <a href="{{ '/about' | relative_url }}" class="secondary-btn">About this journey</a>
+    </div>
   </div>
   <img src="{{ '/assets/images/profile.png' | relative_url }}" alt="Profile" class="hero-avatar" loading="lazy">
 </section>
 
+<section class="stats-grid reveal" aria-label="Site statistics">
+  <div class="stat-card"><span class="stat-kicker">Published notes</span><strong>{{ site.posts.size }}</strong><span>ideas captured</span></div>
+  <div class="stat-card"><span class="stat-kicker">Current rhythm</span><strong>Daily</strong><span>one step at a time</span></div>
+  <div class="stat-card"><span class="stat-kicker">Main track</span><strong>CS</strong><span>fundamentals first</span></div>
+</section>
+
 <section class="dashboard-grid reveal">
   <article class="panel-card">
-    <h2>Study Focus</h2>
+    <div class="panel-heading"><span class="panel-number">01</span><h2>Study Focus</h2></div>
     <p class="panel-sub">A concise view of the learning paths that define this site.</p>
     <div class="metric-grid">
       <div class="metric-item">
@@ -29,7 +39,14 @@ layout: default
   </article>
 
   <article class="panel-card">
-    <h2>Quick Access</h2>
+    <div class="panel-heading"><span class="panel-number">02</span><h2>Quick Access</h2></div>
+    <p class="panel-sub">Jump straight into the part of the archive you need.</p>
+    <div class="quick-grid">
+      <a href="{{ '/posts' | relative_url }}" class="quick-card"><span class="quick-icon">&#8599;</span><span>All posts</span><small>Browse the archive</small></a>
+      <a href="{{ '/reflections' | relative_url }}" class="quick-card"><span class="quick-icon">&#10024;</span><span>Reflections</span><small>Lessons from the process</small></a>
+      <a href="{{ '/dsa' | relative_url }}" class="quick-card"><span class="quick-icon">&#9670;</span><span>DSA practice</span><small>Patterns and problems</small></a>
+      <a href="{{ '/about' | relative_url }}" class="quick-card"><span class="quick-icon">&#8594;</span><span>About me</span><small>Context behind the work</small></a>
+    </div>
   </article>
 </section>
 
