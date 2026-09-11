@@ -37,10 +37,14 @@ layout: default
     {% for post in site.posts %}
       {% if post.categories contains topic.name %}
       {% assign topic_post_index = topic_post_index | plus: 1 %}
+      {% assign topic_post_display_index = topic_post_index %}
+      {% if topic_post_index < 10 %}
+        {% assign topic_post_display_index = '0' | append: topic_post_index %}
+      {% endif %}
       {% assign words = post.content | number_of_words %}
       {% assign reading_time = words | plus: 219 | divided_by: 220 %}
       <article class="topic-post-card reveal">
-        <div class="topic-post-index">{{ topic_post_index | prepend: '0' | slice: -2, 2 }}</div>
+        <div class="topic-post-index">{{ topic_post_display_index }}</div>
         <div class="topic-post-body">
           <div class="post-item-header">
             <span class="post-date">{{ post.date | date: "%b %d, %Y" }} · {{ reading_time }} min read</span>
