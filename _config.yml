@@ -14,6 +14,10 @@ title: Kabileshwaran | Learning in Public
 
 author: Kabileshwaran
 
+logo: /assets/images/logo.svg
+
+image: /assets/images/profile.png
+
 tagline: Daily learnings, technical notes, and reflections from my CS journey
 
 description: >-
@@ -32,6 +36,10 @@ social:
   links:
     - https://github.com/KabileshwaranKabil
     - https://www.linkedin.com/in/m-kabileshwaran-4018a5378/
+
+twitter:
+  username: Kabileshwaran
+  card: summary_large_image
 
 paginate: 10
 

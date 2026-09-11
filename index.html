@@ -9,7 +9,34 @@ layout: default
     <p class="hero-description">A living record of my Computer Science journey: daily practice, practical builds, and the ideas I am still learning how to explain.</p>
     <div class="hero-actions">
       <a href="{{ '/posts' | relative_url }}" class="primary-btn">Read the latest <span aria-hidden="true">&#8594;</span></a>
-      <a href="{{ '/about' | relative_url }}" class="secondary-btn">About the author</a>
+    </div>
+  </div>
+  <img class="hero-profile" src="{{ '/assets/images/profile.png' | relative_url }}" alt="Kabileshwaran" width="160" height="160" loading="eager">
+</section>
+
+<section class="learning-dashboard reveal" aria-labelledby="dashboard-heading">
+  <div class="dashboard-heading">
+    <div>
+      <p class="eyebrow">The daily practice</p>
+      <h2 id="dashboard-heading">Learning dashboard</h2>
+    </div>
+    <span class="dashboard-date">{{ site.time | date: "%B %Y" }}</span>
+  </div>
+  <div class="dashboard-metrics">
+    <div class="dashboard-metric dashboard-streak">
+      <span class="dashboard-metric-label">Study streak</span>
+      <strong id="studyStreakCount">0 days</strong>
+      <span class="dashboard-metric-note">Keep showing up</span>
+    </div>
+    <div class="dashboard-metric">
+      <span class="dashboard-metric-label">Published learning</span>
+      <strong>{{ site.posts.size }} notes</strong>
+      <span class="dashboard-metric-note">Across the learning map</span>
+    </div>
+    <div class="dashboard-progress">
+      <div class="dashboard-progress-head"><span>Current focus</span><strong>Building foundations</strong></div>
+      <div class="progress-track" role="progressbar" aria-label="Learning archive progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="65"><span style="width: 65%"></span></div>
+      <span class="dashboard-metric-note">DSA · CS · Systems · Shipping</span>
     </div>
   </div>
 </section>
@@ -20,7 +47,7 @@ layout: default
       <p class="eyebrow">The learning map</p>
       <h2 id="topics-heading">Explore by topic</h2>
     </div>
-    <a href="{{ '/posts' | relative_url }}" class="section-link">View all writing <span aria-hidden="true">&#8594;</span></a>
+    <span class="section-note">Choose a folder to start reading</span>
   </div>
   <div class="topic-grid">
     {% for topic in site.data.categories %}
@@ -32,6 +59,30 @@ layout: default
         <span class="topic-card-footer"><span>{{ topic_count }} articles</span><span aria-hidden="true">&#8594;</span></span>
       </a>
     {% endfor %}
+  </div>
+</section>
+
+<section class="projects-section reveal" aria-labelledby="projects-heading">
+  <div class="section-intro">
+    <div>
+      <p class="eyebrow">Beyond the notebook</p>
+      <h2 id="projects-heading">Featured projects</h2>
+    </div>
+    <a href="{{ '/projects/' | relative_url }}" class="section-link">See projects <span aria-hidden="true">&#8594;</span></a>
+  </div>
+  <div class="project-preview-grid">
+    <a class="project-preview" href="{{ '/projects/' | relative_url }}">
+      <img src="{{ '/assets/images/optimized/profile-320.webp' | relative_url }}" alt="Learning in Public project" loading="lazy">
+      <span><strong>Learning in Public</strong><small>Jekyll · Writing · UI</small></span>
+    </a>
+    <a class="project-preview" href="{{ '/topics/dsa/' | relative_url }}">
+      <img src="{{ '/assets/images/optimized/java-arrays-core-concepts-320.webp' | relative_url }}" alt="DSA archive project" loading="lazy">
+      <span><strong>DSA Practice Archive</strong><small>Java · Algorithms · Patterns</small></span>
+    </a>
+    <a class="project-preview" href="https://github.com/KabileshwaranKabil" target="_blank" rel="noopener noreferrer">
+      <img src="{{ '/assets/images/app-icon.svg' | relative_url }}" alt="GitHub projects" loading="lazy">
+      <span><strong>More on GitHub</strong><small>Code · Experiments · Progress</small></span>
+    </a>
   </div>
 </section>
 
@@ -48,21 +99,21 @@ layout: default
       {% for post in site.posts limit: 5 %}
         {% assign words = post.content | number_of_words %}
         {% assign read_time = words | plus: 219 | divided_by: 220 %}
-        <article class="latest-post">
+        {% assign thumbnail = '/assets/images/optimized/profile-320.webp' %}
+        {% assign primary_category = post.categories | first %}
+        {% if primary_category == 'DSA' %}{% assign thumbnail = '/assets/images/optimized/java-arrays-core-concepts-320.webp' %}{% endif %}
+        {% if primary_category == 'AI' %}{% assign thumbnail = '/assets/images/app-icon.svg' %}{% endif %}
+        <article class="latest-post article-preview">
           <span class="latest-post-index">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
-          <div>
+          <div class="article-preview-body">
+            <img class="article-preview-thumbnail" src="{{ thumbnail | relative_url }}" alt="" loading="lazy">
             <div class="compact-post-meta"><span>{{ post.date | date: "%b %d, %Y" }}</span><span>{{ read_time }} min read</span></div>
             <h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
-            <div class="post-categories">{% for category in post.categories limit: 2 %}{% assign category_slug = category | slugify %}<a class="category-badge" href="{{ '/topics/' | append: category_slug | append: '/' | relative_url }}">{{ category }}</a>{% endfor %}</div>
+            <p class="article-preview-excerpt">{{ post.excerpt | strip_html | truncatewords: 32 }}</p>
+            <div class="post-categories">{% for category in post.categories limit: 2 %}<span class="category-badge">{{ category }}</span>{% endfor %}</div>
           </div>
         </article>
       {% endfor %}
     </div>
-    <aside class="learning-aside">
-      <p class="eyebrow">The practice</p>
-      <h2>Small notes.<br>Compounding skill.</h2>
-      <p>This site is where I turn study sessions into explanations, patterns, and reference material I can return to later.</p>
-      <a href="{{ '/notes' | relative_url }}" class="text-link">Browse the notes <span aria-hidden="true">&#8594;</span></a>
-    </aside>
   </div>
 </section>

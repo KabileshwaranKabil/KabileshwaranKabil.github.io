@@ -401,6 +401,7 @@
 
   document.addEventListener("DOMContentLoaded", () => {
     initThemeToggle();
+    updateStreak();
     initActiveNavigation();
     initRevealAnimations();
     initPWAInstall();

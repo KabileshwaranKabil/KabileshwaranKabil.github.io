@@ -1,42 +1,58 @@
----
 layout: page
 title: About
 permalink: /about/
+
+---
+layout: page
+title: About Kabileshwaran
+description: Learn about Kabileshwaran, a Computer Science undergraduate documenting daily learning in public.
+permalink: /about/
 ---
 
-## About Me
+<div class="about-page">
+	<section class="about-intro">
+		<p class="eyebrow"><span class="eyebrow-dot"></span> The person behind the notes</p>
+		<h1 class="page-title">I learn by<br><em>making ideas clear.</em></h1>
+		<p class="page-lead">Hi, I’m <strong>Kabileshwaran</strong>, a Computer Science undergraduate building strong fundamentals through daily practice, small projects, and honest technical writing.</p>
+	</section>
 
-Hi, I'm **Kabileshwaran**, a Computer Science undergraduate committed to learning in public and building a strong foundation in core CS concepts.
+	<section class="about-section about-principles" aria-labelledby="principles-heading">
+		<div class="about-section-label">01 / The approach</div>
+		<div>
+			<h2 id="principles-heading">Study, build, explain, repeat.</h2>
+			<p>This site is my external memory. I use it to turn study sessions into explanations I can revisit, improve, and share. The goal is not to appear finished; it is to make progress visible and useful.</p>
+			<p>Writing exposes gaps in understanding. Building gives concepts somewhere to live. Revisiting older notes shows how the thinking changes over time.</p>
+		</div>
+	</section>
 
-## What I'm Doing
+	<section class="about-section" aria-labelledby="focus-heading">
+		<div class="about-section-label">02 / The learning map</div>
+		<div>
+			<h2 id="focus-heading">What I am exploring</h2>
+			<div class="about-focus-grid">
+				<a href="{{ '/topics/dsa/' | relative_url }}"><strong>DSA</strong><span>Patterns, algorithms, and problem solving</span></a>
+				<a href="{{ '/topics/cs-fundamentals/' | relative_url }}"><strong>CS Fundamentals</strong><span>Systems, concepts, and the web</span></a>
+				<a href="{{ '/topics/full-stack/' | relative_url }}"><strong>Full Stack</strong><span>Building and shipping useful software</span></a>
+				<a href="{{ '/topics/ai/' | relative_url }}"><strong>AI</strong><span>Machine learning and thoughtful experiments</span></a>
+				<a href="{{ '/topics/security/' | relative_url }}"><strong>Security</strong><span>Safer applications and systems</span></a>
+				<a href="{{ '/topics/cloud/' | relative_url }}"><strong>Cloud</strong><span>Infrastructure, scale, and AWS foundations</span></a>
+			</div>
+		</div>
+	</section>
 
-I'm documenting my daily learnings, solving algorithmic problems, and writing clear notes to improve my technical skills. This blog serves as a public record of my progress, mistakes, and insights.
-
-## Focus Areas
-
-- **Data Structures & Algorithms**: Problem-solving patterns, complexity analysis, and optimization techniques
-- **Computer Science Fundamentals**: Operating systems, databases, networking, and system design
-- **Software Development**: Building small study tools, scripts, and practice solutions with clean, maintainable code
-- **Technical Writing**: Explaining concepts clearly and documenting my learning process
-
-## Why Learning in Public?
-
-Writing forces me to think clearly, reinforce what I've learned, and fill gaps in my understanding. By sharing openly, I hold myself accountable and create a resource that others might find useful.
-
-## My Journey
-
-As a CS undergraduate, I realized that just coding and studying aren't enough. What truly improves understanding is the ability to explain concepts clearly to others. This blog is my attempt to:
-
-- Reinforce concepts by writing them down
-- Track my progress over time
-- Improve technical communication skills
-- Build consistency and discipline in my learning
-- Create a reference for future me and others
-
-## Connect With Me
-
-- **GitHub**: [KabileshwaranKabil](https://github.com/KabileshwaranKabil)
-- **LinkedIn**: [m-kabileshwaran-4018a5378](https://www.linkedin.com/in/m-kabileshwaran-4018a5378/)
+	<section class="about-section about-contact" aria-labelledby="connect-heading">
+		<div class="about-section-label">03 / Keep in touch</div>
+		<div>
+			<h2 id="connect-heading">Follow the work</h2>
+			<p>The best place to start is the <a href="{{ '/topics/' | relative_url }}">topic map</a> or the <a href="{{ '/posts/' | relative_url }}">full article archive</a>. You can also find me here:</p>
+			<div class="about-links">
+				<a href="https://github.com/KabileshwaranKabil" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">&#8599;</span></a>
+				<a href="https://www.linkedin.com/in/m-kabileshwaran-4018a5378/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">&#8599;</span></a>
+				<a href="https://leetcode.com/u/Kabileshwaran1896/" target="_blank" rel="noopener noreferrer">LeetCode <span aria-hidden="true">&#8599;</span></a>
+			</div>
+		</div>
+	</section>
+</div>
 - **LeetCode**: [Kabileshwaran1896](https://leetcode.com/u/Kabileshwaran1896/)
 
 ---
