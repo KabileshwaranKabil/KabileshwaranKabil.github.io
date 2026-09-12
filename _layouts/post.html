@@ -75,22 +75,24 @@ layout: default
       <h2>Comments</h2>
       <p>Questions, corrections, and practical takeaways are welcome here.</p>
     </div>
-    {% if site.comments.provider == 'utterances' and site.comments.utterances.repo %}
-      <div class="comments-thread" aria-live="polite">
-        <script src="https://utteranc.es/client.js"
-                repo="{{ site.comments.utterances.repo }}"
-                issue-term="{{ site.comments.utterances.issue_term | default: 'pathname' }}"
-                theme="{{ site.comments.utterances.theme | default: 'github-light' }}"
-                label="{{ site.comments.utterances.label | default: 'comments' }}"
-                crossorigin="anonymous"
-                async>
-        </script>
-      </div>
-      <noscript>
-        <p class="comments-disabled">Enable JavaScript to load the discussion thread.</p>
-      </noscript>
-    {% else %}
-      <p class="comments-disabled">Comments are not configured for this site yet.</p>
-    {% endif %}
+    {% if page.comments != false %}
+  {% if site.comments.provider == 'utterances' and site.comments.utterances.repo %}
+    <div class="comments-thread" aria-live="polite">
+      <script src="https://utteranc.es/client.js"
+        repo="{{ site.comments.utterances.repo }}"
+        issue-term="{{ site.comments.utterances.issue_term | default: 'pathname' }}"
+        theme="{{ site.comments.utterances.theme | default: 'github-light' }}"
+        label="{{ site.comments.utterances.label | default: 'comments' }}"
+        crossorigin="anonymous"
+        async>
+      </script>
+    </div>
+    <noscript>
+      <p class="comments-disabled">Enable JavaScript to load the discussion thread.</p>
+    </noscript>
+  {% else %}
+    <p class="comments-disabled">Comments are not configured for this site yet.</p>
+  {% endif %}
+{% endif %}
   </div>
 </article>
