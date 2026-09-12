@@ -1,14 +1,39 @@
 <footer class="site-footer">
   <div class="wrapper footer-inner">
-    <div class="footer-links" aria-label="Footer navigation">
-      <a href="{{ '/posts' | relative_url }}">Blog</a>
-      <a href="{{ '/topics' | relative_url }}">Topics</a>
-      <a href="{{ '/topics/tamizh/' | relative_url }}">Tamizh</a>
-      <a href="{{ '/notes' | relative_url }}">Notes</a>
-      <a href="{{ '/reflections' | relative_url }}">Reflections</a>
-      <a href="{{ '/about' | relative_url }}">About</a>
-      <a href="https://github.com/KabileshwaranKabil" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <div class="footer-grid">
+      <!-- Left Column: Branding & Mission -->
+      <div class="footer-brand">
+        <a href="{{ '/' | relative_url }}" class="footer-logo">Kabileshwaran<span>.</span></a>
+        <p class="footer-tagline">Building in the open, documenting the journey, and learning in public.</p>
+      </div>
+
+      <!-- Right Column: Categorized Navigation -->
+      <div class="footer-nav-group">
+        <div class="footer-col">
+          <span class="footer-heading">Explore</span>
+          <a href="{{ '/posts' | relative_url }}">Blog</a>
+          <a href="{{ '/topics' | relative_url }}">Topics</a>
+          <a href="{{ '/about' | relative_url }}">About</a>
+        </div>
+
+        <div class="footer-col">
+          <span class="footer-heading">Writing</span>
+          <a href="{{ '/notes' | relative_url }}">Notes</a>
+          <a href="{{ '/reflections' | relative_url }}">Reflections</a>
+          <a href="{{ '/topics/tamizh/' | relative_url }}">Tamizh</a>
+        </div>
+
+        <div class="footer-col">
+          <span class="footer-heading">Connect</span>
+          <a href="https://github.com/KabileshwaranKabil" target="_blank" rel="noopener noreferrer">GitHub &#8599;</a>
+          <a href="https://www.linkedin.com/in/m-kabileshwaran-4018a5378/" target="_blank" rel="noopener noreferrer">LinkedIn &#8599;</a>
+          <a href="https://leetcode.com/u/Kabileshwaran1896/" target="_blank" rel="noopener noreferrer">LeetCode &#8599;</a>
+        </div>
+      </div>
     </div>
-    <p class="footer-meta">&copy; {{ 'now' | date: '%Y' }} Kabileshwaran · Learning in public</p>
+
+    <div class="footer-bottom">
+      <p class="footer-meta">&copy; {{ 'now' | date: '%Y' }} Kabileshwaran · Designed for continuous learning.</p>
+    </div>
   </div>
 </footer>
