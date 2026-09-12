@@ -88,6 +88,16 @@ exclude:
   - vendor/gems/
   - vendor/ruby/
 
+  
+
 # Include dotfiles
 include:
   - .htaccess
+
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      comments: true
