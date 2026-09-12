@@ -94,6 +94,14 @@ exclude:
 include:
   - .htaccess
 
+comments:
+  provider: "utterances"
+  utterances:
+    repo: "KabileshwaranKabil/KabileshwaranKabil.github.io"
+    issue_term: "pathname"
+    theme: "github-light"
+    label: "comments"
+
 
 defaults:
   - scope:
