@@ -75,10 +75,14 @@ layout: default
       {% for post in site.posts limit: 5 %}
         {% assign words = post.content | number_of_words %}
         {% assign read_time = words | plus: 219 | divided_by: 220 %}
-        {% assign thumbnail = '/assets/images/optimized/profile-320.webp' %}
+        {% assign thumbnail = '/assets/images/optimized/profile.png' %}
         {% assign primary_category = post.categories | first %}
         {% if primary_category == 'DSA' %}{% assign thumbnail = '/assets/images/optimized/java-arrays-core-concepts-320.webp' %}{% endif %}
-        {% if primary_category == 'AI' %}{% assign thumbnail = '/assets/images/app-icon.svg' %}{% endif %}
+        {% if primary_category == 'AI' %}{% assign thumbnail = '/assets/images/optimized/AI.avif' %}{% endif %}
+        {% if primary_category == 'Tamizh' %}
+          {% assign thumbnail = '/assets/images/optimized/tamil-icon.webp' %}
+        {% endif %}
+        
         <article class="latest-post article-preview">
           <span class="latest-post-index">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
           <div class="article-preview-body">
