@@ -43,3 +43,8 @@
   eyebrow: Learning in public
   description: Honest notes about progress, habits, goals, and the work behind learning.
   symbol: "09"
+- name: Tamizh
+  slug: tamizh
+  eyebrow: Life beyond code
+  description: Tamil writing on life, cinema, personal interests, and the moments worth reflecting on.
+  symbol: "10"

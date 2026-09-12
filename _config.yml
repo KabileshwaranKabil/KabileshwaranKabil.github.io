@@ -51,6 +51,7 @@ comments:
     repo: KabileshwaranKabil/KabileshwaranKabil.github.io
     issue_term: pathname
     theme: github-light
+    label: comments
 
 plugins:
   - jekyll-feed
